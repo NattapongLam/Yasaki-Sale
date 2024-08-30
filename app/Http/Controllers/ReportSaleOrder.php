@@ -89,7 +89,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportBacklogList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('vw_saleorder_backlog')
             ->get();
             $sum = DB::table('vw_saleorder_backlog')
@@ -107,7 +107,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSendProductList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('vw_saleorder_tras')
             ->get();
         }
@@ -120,7 +120,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportBillOrderList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('vw_saleorder_bill')
             ->get();
         }
@@ -133,7 +133,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportGroupLowList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('api_productgrouplow')
             ->get();
         }
@@ -146,7 +146,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSaleOrderList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd1 = DB::table('vw_saleorderproductgroup_all')
             ->get();
             $hd2 = DB::table('vw_saleorderprovince_all')

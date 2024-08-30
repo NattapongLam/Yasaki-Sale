@@ -14,7 +14,7 @@
             </div>
             @endif
             <div class="card-body">
-                <h3 class="card-title" style="font-weight: bold">เปิดบิลย้อนหลัง 7 วัน</h3><br><hr>
+                <h3 class="card-title" style="font-weight: bold">เปิดบิลย้อนหลัง 30 วัน</h3><br><hr>
                 <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>

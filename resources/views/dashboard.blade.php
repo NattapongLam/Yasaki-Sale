@@ -40,7 +40,140 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <div class="card">
           <div class="card-body">   
             <h3 style="text-align: center">นโยบายคุณภาพ</h3>                                    
-            <h5 style="text-align: center">ผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน บริหารต้นทุนอย่างมีประสิทธิภาพ ส่งมอบสินค้าถูกต้อง ทันเวลา พัฒนาต่อเนื่อง เพื่อความพึงพอใจของลูกค้า</h5>     
+            <h5 style="text-align: center">ผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน บริหารต้นทุนอย่างมีประสิทธิภาพ ส่งมอบสินค้าถูกต้อง ทันเวลา พัฒนาต่อเนื่อง เพื่อความพึงพอใจของลูกค้า</h5>  
+            <hr>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{route('requestorder.create')}}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      ใบสั่งซื้อ
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{route('requestorder.index')}}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      รายการสั่งซื้อ
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{route('stockcard.index')}}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      สต็อคสินค้า
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+            </div>  
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/requestorder-list') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                     ยอดจองสินค้า
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-sendproduct') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      ยอดส่งของลูกค้า
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-billorder') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      เปิดบิลลูกค้า
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+            </div> 
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-grouplow') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                    กลุ่มสินค้ายอดผิดปกติ
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-backlog') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      ค้างส่งของลูกค้า
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-saleorder') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                      ภาพรวมยอดขาย
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+            </div>
           </div>
         </div>    
         <!-- /.row -->

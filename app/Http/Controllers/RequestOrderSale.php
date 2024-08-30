@@ -23,7 +23,7 @@ class RequestOrderSale extends Controller
      */
     public function index()
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('requestorder_hd')
             ->leftjoin('requestorder_status','requestorder_hd.requestorder_status_id','=','requestorder_status.requestorder_status_id')
             ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
@@ -46,7 +46,7 @@ class RequestOrderSale extends Controller
      */
     public function create()
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $cust = Customer::leftjoin('vw_requestorder_pricetotal','customers.customer_code','=','vw_requestorder_pricetotal.arcode')
             ->get();
             $sale = DB::table('sale_employee')->get();

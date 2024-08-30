@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="customer_code">ลูกค้า</label>
                                         <select class="form-control select2bs4 @error('customer_code') is-invalid @enderror" id="customer_code" name="customer_code" required autofocus>
-                                            <option value="0">กรุณาเลือก</option>
+                                            <option value="0">ชื่อร้านค้า</option>
                                             @foreach ($cust as $cust)
                                             <option value="{{$cust->customer_code}}">{{$cust->customer_name}} ยอดในเดือน : {{number_format($cust->total)}}</option>
                                             @endforeach                                     

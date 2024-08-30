@@ -14,7 +14,7 @@
             </div>
             @endif
             <div class="card-body">
-                <h3 class="card-title" style="font-weight: bold">กลุ่มสินค้าผิดปกติจะแสดงแต่กลุ่มที่ผิดปกตินะครับไม่ผิดปกติจะไม่แสดงโดยคิดที่ยอดมากกว่า -60%</h3><br><hr>
+                <h3 class="card-title" style="font-weight: bold">กลุ่มสินค้าผิดปกติจะแสดงแต่กลุ่มที่ผิดปกตินะครับไม่ผิดปกติจะไม่แสดง</h3><br><hr>
                 <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
