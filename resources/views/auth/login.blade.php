@@ -1,25 +1,34 @@
 <x-guest-layout>
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{asset('assets/plugins/fontawesome-free/css/all.min.css')}}">
+  <!-- icheck bootstrap -->
+  <link rel="stylesheet" href="{{asset('assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css')}}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
     <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+<x-auth-session-status class="mb-4" :status="session('status')" />
 
+    <div class="text-center">
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="username" :value="__('รหัสพนักงาน')" />
-            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" />
+            {{-- <x-input-label for="username" :value="__('รหัสพนักงาน')" /> --}}
+            <x-text-input id="username" class="block mt-1 w-full" type="text" name="username" :value="old('username')" required autofocus autocomplete="username" placeholder="รหัสพนักงาน" />
             <x-input-error :messages="$errors->get('username')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
-            <x-input-label for="password" :value="__('รหัสผ่าน')" />
+            {{-- <x-input-label for="password" :value="__('รหัสผ่าน')" /> --}}
 
             <x-text-input id="password" class="block mt-1 w-full"
                             type="password"
                             name="password"
-                            required autocomplete="current-password" />
+                            required autocomplete="current-password" placeholder="รหัสผ่าน"/>
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -39,9 +48,16 @@
                 </a>
             @endif --}}
 
-            <x-primary-button class="ml-3">
+            <x-primary-button class="ml-3 btn-primary">
                 {{ __('เข้าสู่ระบบ') }}
             </x-primary-button>
         </div>
     </form>
+    </div>
+<!-- jQuery -->
+<script src="{{asset('assets/plugins/jquery/jquery.min.js')}}"></script>
+<!-- Bootstrap 4 -->
+<script src="{{asset('assets/plugins/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('assets/dist/js/adminlte.min.js')}}"></script>
 </x-guest-layout>
