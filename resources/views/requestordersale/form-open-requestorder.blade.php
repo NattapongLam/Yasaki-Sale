@@ -26,7 +26,7 @@
                                 <th class="text-center">ลูกค้า</th>
                                 <th class="text-center">พนักงาน</th>
                                 <th class="text-center">ใบจองสินค้า</th>
-                                {{-- <th class="text-center">บิลขาย</th> --}}
+                                <th class="text-center">บิลขาย</th>
                                 <th class="text-center"></th>
                             </tr>
                         </thead>
@@ -50,7 +50,7 @@
                                     <td class="text-center">{{$item->customer_name}}</td>
                                     <td class="text-center">{{$item->sa_name}}</td>
                                     <td class="text-center">{{$item->salerequest_docuno}}</td>
-                                    {{-- <td class="text-center">{{$item->saleorder_docuno}}</td> --}}
+                                    <td class="text-center">{{$item->saleorder_docuno}}</td>
                                     <td class="text-center">
                                         @if($item->requestorder_status_id == 1)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>

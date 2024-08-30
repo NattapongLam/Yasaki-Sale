@@ -158,7 +158,8 @@ class RequestOrderSale extends Controller
                     'requestorder_dt_qty' => $request->pd_qty[$key],
                     'requestorder_dt_flag' => true,
                     'create_at' => Carbon::now(),
-                    'person_at' => Auth::user()->username
+                    'person_at' => Auth::user()->username,
+                    'requestorder_dt_listno' => $key+1
                 ]);
             }
             DB::commit();
@@ -256,7 +257,7 @@ class RequestOrderSale extends Controller
                 'person_at' =>  Auth::user()->username
             ]);
             foreach($request->pd_code as $key => $val){
-                $pd = Product::where('pd_code',$val)->first();
+                $pd = Product::where('pd_code',$val)->first();              
                 $dt = DB::table('requestorder_dt')->insert([
                     'requestorder_hd_id' => $id,
                     'pd_code' => $pd->pd_code,
@@ -269,6 +270,18 @@ class RequestOrderSale extends Controller
                     'requestorder_dt_flag' => true,
                     'create_at' => Carbon::now(),
                     'person_at' => Auth::user()->username
+                ]);
+            }
+            // DB::commit();
+            $ck = DB::table('requestorder_dt')
+            ->where('requestorder_hd_id',$id)
+            ->where('requestorder_dt_flag',true)
+            ->get();
+            foreach ($ck as $key => $value) {
+                $up = DB::table('requestorder_dt')
+                ->where('requestorder_dt_id',$value->requestorder_dt_id)
+                ->update([
+                    'requestorder_dt_listno' => $key+1
                 ]);
             }
             DB::commit();

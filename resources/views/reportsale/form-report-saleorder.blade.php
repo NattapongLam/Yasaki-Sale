@@ -25,6 +25,7 @@
                                         <th>ยอดปีก่อนหน้า</th>
                                         <th>ยอดปีปัจจุบัน</th>
                                         <th>%</th>
+                                        <th>ยอดค้าง</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -33,6 +34,7 @@
                                             <td>{{number_format($item->old_netamount,2)}}</td>
                                             <td>{{number_format($item->new_netamount,2)}}</td>
                                             <td>{{number_format($item->per_netamount,2)}}</td>
+                                            <td>{{number_format($item->backlogprice,2)}}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>
