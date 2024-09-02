@@ -118,8 +118,12 @@
                             <div class="row">
                                 <div class="card-body">
                                 <ul class="nav nav-pills">
-                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">ผ้าเบรค</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="#timeline1" data-toggle="tab">ดิสเบรค</a></li>
+                                    <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">VIP</a></li>    
+                                    <li class="nav-item"><a class="nav-link" href="#activity1" data-toggle="tab">SUPER</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#activity2" data-toggle="tab">PREMIUM</a></li>                                   
+                                    <li class="nav-item"><a class="nav-link" href="#timeline1" data-toggle="tab">ดิสฟ้า</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#timeline1_1" data-toggle="tab">ดิสทอง</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="#timeline1_2" data-toggle="tab">REVOTEQ</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timeline2" data-toggle="tab">ดุมจับสเตอร์</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timeline3" data-toggle="tab">ดุมหน้าดิส</a></li>
                                     <li class="nav-item"><a class="nav-link" href="#timeline4" data-toggle="tab">ดุมหลังดรัม</a></li>
@@ -145,7 +149,13 @@
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
                                                               <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic1)}}">
-                                                          </a>                        
+                                                          </a>    
+                                                          <a href="{{asset('/images/products/'.$stc1->pd_pic2)}}" target="_blank">
+                                                            <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic2)}}">
+                                                          </a>   
+                                                          <a href="{{asset('/images/products/'.$stc1->pd_pic3)}}" target="_blank">
+                                                            <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic3)}}">
+                                                        </a>                   
                                                         </td>
                                                         <td>{{$stc1->pd_code}}/{{$stc1->pd_name}} (คงเหลือ:{{number_format($stc1->pd_stc,2)}})</td>                      
                                                     </tr>
@@ -154,6 +164,70 @@
                                           </table>
                                         </div>
                                     </div>
+                                    <div class="tab-pane" id="activity1">
+                                        <div class="table-responsive">
+                                            <table id="tb_job1_1" class="table table-bordered table-striped">
+                                              <thead>
+                                              <tr>
+                                                <th class="text-center">เพิ่ม</th>
+                                                <th class="text-center">รูปสินค้า</th>
+                                                <th class="text-center">สินค้า</th>
+                                              </tr>
+                                              </thead>
+                                              <tbody>
+                                                  @foreach ($stc1_1 as $stc1_1)
+                                                      <tr>    
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc1_1->id}})"></td>                                         
+                                                          <td class="text-center">
+                                                            <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc1_1->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc1_1->pd_pic3)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
+                                                            </a>                             
+                                                          </td>
+                                                          <td>{{$stc1_1->pd_code}}/{{$stc1_1->pd_name}} (คงเหลือ:{{number_format($stc1_1->pd_stc,2)}})</td>                      
+                                                      </tr>
+                                                  @endforeach
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                      </div>
+                                      <div class="tab-pane" id="activity2">
+                                        <div class="table-responsive">
+                                            <table id="tb_job1_2" class="table table-bordered table-striped">
+                                              <thead>
+                                              <tr>
+                                                <th class="text-center">เพิ่ม</th>
+                                                <th class="text-center">รูปสินค้า</th>
+                                                <th class="text-center">สินค้า</th>
+                                              </tr>
+                                              </thead>
+                                              <tbody>
+                                                  @foreach ($stc1_2 as $stc1_2)
+                                                      <tr>    
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc1_2->id}})"></td>                                         
+                                                          <td class="text-center">
+                                                            <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc1_2->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc1_2->pd_pic3)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
+                                                            </a>                             
+                                                          </td>
+                                                          <td>{{$stc1_2->pd_code}}/{{$stc1_2->pd_name}} (คงเหลือ:{{number_format($stc1_2->pd_stc,2)}})</td>                      
+                                                      </tr>
+                                                  @endforeach
+                                              </tbody>
+                                            </table>
+                                          </div>
+                                      </div>
                                     <div class="tab-pane" id="timeline1">    
                                       <div class="table-responsive">
                                           <table id="tb_job2" class="table table-bordered table-striped">
@@ -171,7 +245,13 @@
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
                                                               <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic1)}}">
-                                                          </a>                        
+                                                          </a>   
+                                                          <a href="{{asset('/images/products/'.$stc2->pd_pic2)}}" target="_blank">
+                                                            <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic2)}}">
+                                                          </a>  
+                                                          <a href="{{asset('/images/products/'.$stc2->pd_pic3)}}" target="_blank">
+                                                            <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic3)}}">
+                                                        </a>                             
                                                         </td>
                                                         <td>{{$stc2->pd_code}}/{{$stc2->pd_name}} (คงเหลือ:{{number_format($stc2->pd_stc,2)}})</td>                       
                                                     </tr>
@@ -180,6 +260,70 @@
                                           </table>
                                         </div>                      
                                     </div>
+                                    <div class="tab-pane" id="timeline1_1">    
+                                        <div class="table-responsive">
+                                            <table id="tb_job2_1" class="table table-bordered table-striped">
+                                              <thead>
+                                              <tr>
+                                                  <th class="text-center">เพิ่ม</th>
+                                                  <th class="text-center">รูปสินค้า</th>
+                                                  <th class="text-center">สินค้า</th>
+                                              </tr>
+                                              </thead>
+                                              <tbody>
+                                                  @foreach ($stc2_1 as $stc2_1)
+                                                      <tr>          
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc2_1->id}})"></td>                                      
+                                                          <td class="text-center">
+                                                            <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic1)}}">
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc2_1->pd_pic2)}}" target="_blank">
+                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic2)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc2_1->pd_pic3)}}" target="_blank">
+                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic3)}}">
+                                                          </a>                             
+                                                          </td>
+                                                          <td>{{$stc2_1->pd_code}}/{{$stc2_1->pd_name}} (คงเหลือ:{{number_format($stc2_1->pd_stc,2)}})</td>                       
+                                                      </tr>
+                                                  @endforeach
+                                              </tbody>
+                                            </table>
+                                          </div>                      
+                                      </div>
+                                      <div class="tab-pane" id="timeline1_2">    
+                                        <div class="table-responsive">
+                                            <table id="tb_job2_2" class="table table-bordered table-striped">
+                                              <thead>
+                                              <tr>
+                                                  <th class="text-center">เพิ่ม</th>
+                                                  <th class="text-center">รูปสินค้า</th>
+                                                  <th class="text-center">สินค้า</th>
+                                              </tr>
+                                              </thead>
+                                              <tbody>
+                                                  @foreach ($stc2_2 as $stc2_2)
+                                                      <tr>          
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc2_2->id}})"></td>                                      
+                                                          <td class="text-center">
+                                                            <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic1)}}">
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc2_2->pd_pic2)}}" target="_blank">
+                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic2)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc2_2->pd_pic3)}}" target="_blank">
+                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic3)}}">
+                                                          </a>                             
+                                                          </td>
+                                                          <td>{{$stc2_2->pd_code}}/{{$stc2_2->pd_name}} (คงเหลือ:{{number_format($stc2_2->pd_stc,2)}})</td>                       
+                                                      </tr>
+                                                  @endforeach
+                                              </tbody>
+                                            </table>
+                                          </div>                      
+                                      </div>
                                     <div class="tab-pane" id="timeline2">    
                                       <div class="table-responsive">
                                           <table id="tb_job3" class="table table-bordered table-striped">
@@ -197,7 +341,13 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic1)}}">
-                                                            </a>                        
+                                                            </a>     
+                                                            <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
+                                                            </a>                     
                                                           </td>
                                                           <td>{{$stc3->pd_code}}/{{$stc3->pd_name}} (คงเหลือ:{{number_format($stc3->pd_stc,2)}})</td>                      
                                                     </tr>
@@ -223,7 +373,13 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic1)}}">
-                                                            </a>                        
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc4->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
+                                                            </a>    
+                                                            <a href="{{asset('/images/products/'.$stc4->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
+                                                            </a>                         
                                                           </td>
                                                           <td>{{$stc4->pd_code}}/{{$stc4->pd_name}} (คงเหลือ:{{number_format($stc4->pd_stc,2)}})</td>                       
                                                     </tr>
@@ -249,8 +405,14 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic1)}}">
-                                                            </a>                        
-                                                          </td>
+                                                            </a>
+                                                            <a href="{{asset('/images/products/'.$stc5->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc5->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
+                                                            </a>                           
+                                                          </td>                                                         
                                                           <td>{{$stc5->pd_code}}/{{$stc5->pd_name}} (คงเหลือ:{{number_format($stc5->pd_stc,2)}})</td>                           
                                                     </tr>
                                                 @endforeach
@@ -275,7 +437,13 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic1)}}">
-                                                            </a>                        
+                                                            </a>        
+                                                            <a href="{{asset('/images/products/'.$stc6->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic2)}}">
+                                                            </a>      
+                                                            <a href="{{asset('/images/products/'.$stc6->pd_pic3)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic3)}}">
+                                                            </a>                      
                                                           </td>
                                                           <td>{{$stc6->pd_code}}/{{$stc6->pd_name}} (คงเหลือ:{{number_format($stc6->pd_stc,2)}})</td>                         
                                                     </tr>
@@ -301,7 +469,13 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic1)}}">
-                                                            </a>                        
+                                                            </a>       
+                                                            <a href="{{asset('/images/products/'.$stc7->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic2)}}">
+                                                            </a>     
+                                                            <a href="{{asset('/images/products/'.$stc7->pd_pic3)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic3)}}">
+                                                            </a>              
                                                           </td>
                                                           <td>{{$stc7->pd_code}}/{{$stc7->pd_name}} (คงเหลือ:{{number_format($stc7->pd_stc,2)}})</td>                         
                                                     </tr>
@@ -327,7 +501,13 @@
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic1)}}">
-                                                            </a>                        
+                                                            </a>   
+                                                            <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic2)}}">
+                                                            </a>  
+                                                            <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
+                                                                <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
+                                                            </a>                             
                                                           </td>
                                                           <td>{{$stc8->pd_code}}/{{$stc8->pd_name}} (คงเหลือ:{{number_format($stc8->pd_stc,2)}})</td>                       
                                                     </tr>
@@ -370,6 +550,32 @@ $(document).ready(function() {
     })
 });   
 $(document).ready(function() {
+    $('#tb_job1_1').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 0, "asc" ]],        
+    })
+});
+$(document).ready(function() {
+    $('#tb_job1_2').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 0, "asc" ]],        
+    })
+});
+$(document).ready(function() {
     $('#tb_job2').DataTable({
         "pageLength": 5,
         "lengthMenu": [
@@ -382,6 +588,32 @@ $(document).ready(function() {
     "order": [[ 0, "asc" ]],        
     })
 });  
+$(document).ready(function() {
+    $('#tb_job2_1').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 0, "asc" ]],        
+    })
+}); 
+$(document).ready(function() {
+    $('#tb_job2_2').DataTable({
+        "pageLength": 5,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 0, "asc" ]],        
+    })
+});
 $(document).ready(function() {
     $('#tb_job3').DataTable({
         "pageLength": 5,
