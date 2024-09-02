@@ -62,10 +62,34 @@ class RequestOrderSale extends Controller
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_code','<>','001--0001')
+        ->where('pd_name','like','%VIP%')
+        ->get();
+        $stc1_1 = Product::where('pd_group','ผ้าเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_code','<>','001--0001')
+        ->where('pd_name','like','%Super%')
+        ->get();
+        $stc1_2 = Product::where('pd_group','ผ้าเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_code','<>','001--0001')
+        ->where('pd_name','like','%Premium%')
         ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_name','like','%ฟ้า%')
+        ->get();
+        $stc2_1 = Product::where('pd_group','ดิสเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_name','like','%ทอง%')
+        ->get();
+        $stc2_2 = Product::where('pd_group','ดิสเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_name','like','%REVOTEQ%')
         ->get();
         $stc3 = Product::where('pd_group','ดุมจับสเตอร์')
         ->where('pd_flag',true)
@@ -101,7 +125,7 @@ class RequestOrderSale extends Controller
             $docs = 'PR' . date('ym')  . str_pad(1, 4, '0', STR_PAD_LEFT);
             $docs_number = 1;
         }
-        return view('requestordersale.form-create-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','cust','sale','docs','docs_number'));
+        return view('requestordersale.form-create-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','cust','sale','docs','docs_number','stc1_1','stc1_2','stc2_1','stc2_2'));
     }
 
     /**
@@ -196,6 +220,7 @@ class RequestOrderSale extends Controller
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_code','<>','001--0001')
+        ->where('pd_name','like','%VIP%')
         ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
@@ -358,5 +383,22 @@ class RequestOrderSale extends Controller
             ->sum('total');
         }
         return view('reportsale.form-report-requestorder', compact('hd','sum'));
+    }
+
+    public function getOrderBacklog(Request $request)
+    {
+        $product = DB::table('api_saleorder_backlog')
+        ->where('ARCODE',$request->id)
+        ->selectRaw("ITEMCODE")
+        ->selectRaw("ITEMNAME")
+        ->selectRaw("SUM(REMAINQTY) as REMAINQTY")
+        ->groupBy('ITEMCODE','ITEMNAME')
+        ->get();
+        return response()->json(
+            [
+                'status' => true,
+                'product' => $product,
+            ]
+        );
     }
 }
