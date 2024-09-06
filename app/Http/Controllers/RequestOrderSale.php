@@ -205,7 +205,15 @@ class RequestOrderSale extends Controller
      */
     public function show($id)
     {
-        //
+        $hd = DB::table('requestorder_hd')
+        ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
+        ->where('requestorder_hd.requestorder_hd_id',$id)
+        ->first();
+        $dt = DB::table('requestorder_dt')
+        ->where('requestorder_hd_id',$id)
+        ->where('requestorder_dt_flag',true)
+        ->get();
+        return view('requestordersale.form-view-requestorder', compact('hd','dt'));
     }
 
     /**
@@ -282,7 +290,17 @@ class RequestOrderSale extends Controller
         ->where('requestorder_hd_id',$id)
         ->where('requestorder_dt_flag',true)
         ->get();
-        return view('requestordersale.form-edit-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','hd','dt','stc1_1','stc1_2','stc2_1','stc2_2'));
+        $product = DB::table('api_saleorder_backlog')
+        ->where('ARCODE', $hd->customer_code)
+        ->selectRaw("ITEMCODE")
+        ->selectRaw("ITEMNAME")
+        ->selectRaw("SUM(REMAINQTY) as REMAINQTY")
+        ->groupBy('ITEMCODE','ITEMNAME')
+        ->get();
+        $bill =DB::table('vw_billorder_pricetotal')
+        ->where('arcode',$hd->customer_code)
+        ->first();
+        return view('requestordersale.form-edit-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','hd','dt','stc1_1','stc1_2','stc2_1','stc2_2','product','bill'));
     }
 
     /**
@@ -417,10 +435,14 @@ class RequestOrderSale extends Controller
         ->selectRaw("SUM(REMAINQTY) as REMAINQTY")
         ->groupBy('ITEMCODE','ITEMNAME')
         ->get();
+        $bill =DB::table('vw_billorder_pricetotal')
+        ->where('arcode',$request->id)
+        ->first();
         return response()->json(
             [
                 'status' => true,
                 'product' => $product,
+                'bill' => $bill
             ]
         );
     }

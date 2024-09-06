@@ -63,6 +63,25 @@
                                 </div>
                             </div>
                             <div class="row">
+                                @if ($bill)
+                                <h4 style="color: red">เปิดบิลภายในเดือน : {{number_format($bill->netamount,2)}}</h4>
+                                @endif
+                                @if ($product)
+                                <h4 style="color: red">สินค้าค้างส่ง : </h4>
+                                <table class="table">
+                                    <tbody>
+                                        @foreach ($product as $item)
+                                        <tr>
+                                            <td>{{$item->ITEMCODE}}/{{$item->ITEMNAME}}</td>
+                                            <td>{{number_format($item->REMAINQTY,2)}}</td>
+                                        </tr>
+                                        @endforeach
+                                       
+                                    </tbody>
+                                </table>
+                                @endif                                
+                            </div>
+                            <div class="row">
                                 <label>รายการที่สั่งแล้ว</label>
                                 <table class="table table-bordered table-striped">
                                     <thead>

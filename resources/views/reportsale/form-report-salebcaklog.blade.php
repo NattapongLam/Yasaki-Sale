@@ -21,6 +21,7 @@
                             <tr>
                                 <th>ลูกค้า</th>
                                 <th>สินค้า</th>
+                                <th>สต็อค</th>
                                 <th>จำนวนค้าง</th>
                                 <th>ยอดค้าง</th>
                             </tr>
@@ -29,7 +30,8 @@
                             @foreach ($hd as $item)
                                 <tr>
                                     <td>{{$item->ARNAME}}</td>
-                                    <td>{{$item->ITEMNAME}}</td>
+                                    <td>{{$item->ITEMCODE}}/{{$item->ITEMNAME}}</td>
+                                    <td>{{number_format($item->pd_stc,2)}}</td>
                                     <td>{{number_format($item->REMAINQTY,2)}}</td>
                                     <td>{{number_format($item->NETAMOUNT,2)}}</td>
                                 </tr>
@@ -37,7 +39,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <th colspan="3">รวม</th>
+                                <th colspan="4">รวม</th>
                                 <th>{{number_format($sum)}}</th>
                             </tr>
                         </tfoot>

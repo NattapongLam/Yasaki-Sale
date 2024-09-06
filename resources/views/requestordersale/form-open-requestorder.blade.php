@@ -15,7 +15,6 @@
             @endif
             <div class="card-body">
                 <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3><br><hr>
-                <div class="table-responsive">
                     <table id="example1" class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -27,6 +26,7 @@
                                 <th class="text-center">พนักงาน</th>
                                 <th class="text-center">ใบจองสินค้า</th>
                                 <th class="text-center">บิลขาย</th>
+                                <th class="text-center">ดูเอกสาร</th>
                                 <th class="text-center"></th>
                             </tr>
                         </thead>
@@ -52,6 +52,9 @@
                                     <td class="text-center">{{$item->salerequest_docuno}}</td>
                                     <td class="text-center">{{$item->saleorder_docuno}}</td>
                                     <td class="text-center">
+                                        <a href="{{ route('requestorder.show',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                    </td>
+                                    <td class="text-center">
                                         @if($item->requestorder_status_id == 1)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                         <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
@@ -61,7 +64,6 @@
                             @endforeach
                         </tbody>
                     </table>
-                </div>
             </div>
         </div>
     </div>

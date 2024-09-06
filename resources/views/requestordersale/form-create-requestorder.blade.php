@@ -79,9 +79,7 @@
                             </div>
                             <hr>
                             <div class="row">
-                                <center>
-                                    <h5 style="color: red;">สินค้าค้าง</h5>
-                                </center>                              
+                                <h5 style="color: red" id="issue_bill"></h5>                          
                                 <table class="table">
                                 <tbody style="color: red" id="tb_getorder"></tbody>
                                 </table>
@@ -746,6 +744,12 @@ selOrderlog = (id) => {
                         }
                     });
                     $('#tb_getorder').html(productlist)
+                    $.each(data.bill, function(key, items) {
+                        $('#issue_bill').html(`
+                        เปิดบิลภายในเดือน : ${data.bill.netamount}<br>
+                        สินค้าค้างส่ง : 
+                         `)
+                    });
                 }
         });
     });
