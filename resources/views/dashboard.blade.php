@@ -174,6 +174,36 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </div>
             </div>
+            <div class="row">
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="{{ url('/report-saleordermonth') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                    ยอดขายประจำเดือน
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-4 col-sm-6 col-12">
+                <a href="https://demo.revoteq-yasaki.com/isosals" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h4>
+                     เอกสาร ISO
+                    </h4>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+            </div>
           </div>
         </div>    
         <!-- /.row -->

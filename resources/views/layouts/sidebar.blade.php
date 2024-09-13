@@ -207,6 +207,12 @@
               <i class="nav-icon fas fa-paste"></i>
               <p>รายงานค้างส่งสินค้า</p>
           </a>
+        </li>
+        <li class="nav-item">
+          <a href="{{ url('/report-saleordermonth') }}" class="nav-link">
+              <i class="nav-icon fas fa-paste"></i>
+              <p>ยอดขายประจำเดือน</p>
+          </a>
         </li> 
         <li class="nav-item">
           <a href="{{ url('/report-saleorder') }}" class="nav-link">

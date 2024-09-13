@@ -136,7 +136,7 @@ $(document).ready(function() {
             ],
             //order by
             "order": [
-                [9, "desc"]
+                [0, "desc"]
             ],
         })
     });   

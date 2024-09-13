@@ -153,7 +153,7 @@
                                 <div class="tab-content">
                                     <div class="active tab-pane" id="activity">
                                       <div class="table-responsive">
-                                          <table id="tb_job1" class="table table-bordered table-striped">
+                                          <table id="tb_job1" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                               <th class="text-center">เพิ่ม</th>
@@ -164,19 +164,23 @@
                                             <tbody>
                                                 @foreach ($stc1 as $stc1)
                                                     <tr>    
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc1->id}})"></td>                                         
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1->id}})"></td>                                         
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic1)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc1->pd_pic1)}}">
                                                           </a>    
                                                           <a href="{{asset('/images/products/'.$stc1->pd_pic2)}}" target="_blank">
-                                                            <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic2)}}">
+                                                            <img width="20px" src="{{asset('/images/products/'.$stc1->pd_pic2)}}">
                                                           </a>   
                                                           <a href="{{asset('/images/products/'.$stc1->pd_pic3)}}" target="_blank">
-                                                            <img width="100px" src="{{asset('/images/products/'.$stc1->pd_pic3)}}">
+                                                            <img width="20px" src="{{asset('/images/products/'.$stc1->pd_pic3)}}">
                                                         </a>                   
                                                         </td>
-                                                        <td>{{$stc1->pd_code}}/{{$stc1->pd_name}} (คงเหลือ:{{number_format($stc1->pd_stc,2)}})</td>                      
+                                                        <td>
+                                                            <p onclick="addTolist({{$stc1->id}})">
+                                                                {{$stc1->pd_code}}/{{$stc1->pd_name}} (คงเหลือ:{{number_format($stc1->pd_stc,2)}})
+                                                            </p>                                                          
+                                                        </td>                      
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -185,7 +189,7 @@
                                     </div>
                                     <div class="tab-pane" id="activity1">
                                         <div class="table-responsive">
-                                            <table id="tb_job1_1" class="table table-bordered table-striped">
+                                            <table id="tb_job1_1" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -196,19 +200,23 @@
                                               <tbody>
                                                   @foreach ($stc1_1 as $stc1_1)
                                                       <tr>    
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc1_1->id}})"></td>                                         
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_1->id}})"></td>                                         
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc1_1->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc1_1->pd_pic3)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
                                                             </a>                             
                                                           </td>
-                                                          <td>{{$stc1_1->pd_code}}/{{$stc1_1->pd_name}} (คงเหลือ:{{number_format($stc1_1->pd_stc,2)}})</td>                      
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc1_1->id}})">
+                                                                {{$stc1_1->pd_code}}/{{$stc1_1->pd_name}} (คงเหลือ:{{number_format($stc1_1->pd_stc,2)}})
+                                                            </p>                                                          
+                                                          </td>                      
                                                       </tr>
                                                   @endforeach
                                               </tbody>
@@ -217,7 +225,7 @@
                                       </div>
                                       <div class="tab-pane" id="activity2">
                                         <div class="table-responsive">
-                                            <table id="tb_job1_2" class="table table-bordered table-striped">
+                                            <table id="tb_job1_2" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -228,19 +236,23 @@
                                               <tbody>
                                                   @foreach ($stc1_2 as $stc1_2)
                                                       <tr>    
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc1_2->id}})"></td>                                         
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_2->id}})"></td>                                         
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc1_2->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic2)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc1_2->pd_pic3)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
                                                             </a>                             
                                                           </td>
-                                                          <td>{{$stc1_2->pd_code}}/{{$stc1_2->pd_name}} (คงเหลือ:{{number_format($stc1_2->pd_stc,2)}})</td>                      
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc1_2->id}})">
+                                                                {{$stc1_2->pd_code}}/{{$stc1_2->pd_name}} (คงเหลือ:{{number_format($stc1_2->pd_stc,2)}})
+                                                            </p>                                                           
+                                                          </td>                      
                                                       </tr>
                                                   @endforeach
                                               </tbody>
@@ -249,7 +261,7 @@
                                       </div>
                                     <div class="tab-pane" id="timeline1">    
                                       <div class="table-responsive">
-                                          <table id="tb_job2" class="table table-bordered table-striped">
+                                          <table id="tb_job2" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -260,19 +272,23 @@
                                             <tbody>
                                                 @foreach ($stc2 as $stc2)
                                                     <tr>          
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc2->id}})"></td>                                      
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2->id}})"></td>                                      
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic1)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc2->pd_pic1)}}">
                                                           </a>   
                                                           <a href="{{asset('/images/products/'.$stc2->pd_pic2)}}" target="_blank">
-                                                            <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic2)}}">
+                                                            <img width="20px" src="{{asset('/images/products/'.$stc2->pd_pic2)}}">
                                                           </a>  
                                                           <a href="{{asset('/images/products/'.$stc2->pd_pic3)}}" target="_blank">
-                                                            <img width="100px" src="{{asset('/images/products/'.$stc2->pd_pic3)}}">
+                                                            <img width="20px" src="{{asset('/images/products/'.$stc2->pd_pic3)}}">
                                                         </a>                             
                                                         </td>
-                                                        <td>{{$stc2->pd_code}}/{{$stc2->pd_name}} (คงเหลือ:{{number_format($stc2->pd_stc,2)}})</td>                       
+                                                        <td>
+                                                            <p onclick="addTolist({{$stc2->id}})">
+                                                                {{$stc2->pd_code}}/{{$stc2->pd_name}} (คงเหลือ:{{number_format($stc2->pd_stc,2)}})
+                                                            </p>                                                           
+                                                        </td>                       
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -281,7 +297,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline1_1">    
                                         <div class="table-responsive">
-                                            <table id="tb_job2_1" class="table table-bordered table-striped">
+                                            <table id="tb_job2_1" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
                                                   <th class="text-center">เพิ่ม</th>
@@ -292,19 +308,23 @@
                                               <tbody>
                                                   @foreach ($stc2_1 as $stc2_1)
                                                       <tr>          
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc2_1->id}})"></td>                                      
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_1->id}})"></td>                                      
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc2_1->pd_pic1)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc2_1->pd_pic2)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic2)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc2_1->pd_pic2)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc2_1->pd_pic3)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_1->pd_pic3)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc2_1->pd_pic3)}}">
                                                           </a>                             
                                                           </td>
-                                                          <td>{{$stc2_1->pd_code}}/{{$stc2_1->pd_name}} (คงเหลือ:{{number_format($stc2_1->pd_stc,2)}})</td>                       
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc2_1->id}})">
+                                                                {{$stc2_1->pd_code}}/{{$stc2_1->pd_name}} (คงเหลือ:{{number_format($stc2_1->pd_stc,2)}})
+                                                            </p>                                                           
+                                                         </td>                       
                                                       </tr>
                                                   @endforeach
                                               </tbody>
@@ -313,7 +333,7 @@
                                       </div>
                                       <div class="tab-pane" id="timeline1_2">    
                                         <div class="table-responsive">
-                                            <table id="tb_job2_2" class="table table-bordered table-striped">
+                                            <table id="tb_job2_2" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
                                                   <th class="text-center">เพิ่ม</th>
@@ -324,19 +344,23 @@
                                               <tbody>
                                                   @foreach ($stc2_2 as $stc2_2)
                                                       <tr>          
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc2_2->id}})"></td>                                      
+                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_2->id}})"></td>                                      
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc2_2->pd_pic1)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc2_2->pd_pic2)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic2)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc2_2->pd_pic2)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc2_2->pd_pic3)}}" target="_blank">
-                                                              <img width="100px" src="{{asset('/images/products/'.$stc2_2->pd_pic3)}}">
+                                                              <img width="20px" src="{{asset('/images/products/'.$stc2_2->pd_pic3)}}">
                                                           </a>                             
                                                           </td>
-                                                          <td>{{$stc2_2->pd_code}}/{{$stc2_2->pd_name}} (คงเหลือ:{{number_format($stc2_2->pd_stc,2)}})</td>                       
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc2_2->id}})">
+                                                                {{$stc2_2->pd_code}}/{{$stc2_2->pd_name}} (คงเหลือ:{{number_format($stc2_2->pd_stc,2)}})
+                                                            </p>                                                          
+                                                         </td>                       
                                                       </tr>
                                                   @endforeach
                                               </tbody>
@@ -345,7 +369,7 @@
                                       </div>
                                     <div class="tab-pane" id="timeline2">    
                                       <div class="table-responsive">
-                                          <table id="tb_job3" class="table table-bordered table-striped">
+                                          <table id="tb_job3" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -356,19 +380,23 @@
                                             <tbody>
                                                 @foreach ($stc3 as $stc3)
                                                     <tr>       
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc3->id}})"></td>                                       
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc3->id}})"></td>                                       
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc3->pd_pic1)}}">
                                                             </a>     
                                                             <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc3->pd_pic2)}}">
                                                             </a>                     
                                                           </td>
-                                                          <td>{{$stc3->pd_code}}/{{$stc3->pd_name}} (คงเหลือ:{{number_format($stc3->pd_stc,2)}})</td>                      
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc3->id}})">
+                                                                {{$stc3->pd_code}}/{{$stc3->pd_name}} (คงเหลือ:{{number_format($stc3->pd_stc,2)}})
+                                                            </p>                                                          
+                                                         </td>                      
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -377,7 +405,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline3">    
                                       <div class="table-responsive">
-                                          <table id="tb_job4" class="table table-bordered table-striped">
+                                          <table id="tb_job4" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -388,19 +416,23 @@
                                             <tbody>
                                                 @foreach ($stc4 as $stc4)
                                                     <tr>              
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc4->id}})"></td>                               
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc4->id}})"></td>                               
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc4->pd_pic1)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc4->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
                                                             </a>    
                                                             <a href="{{asset('/images/products/'.$stc4->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc4->pd_pic2)}}">
                                                             </a>                         
                                                           </td>
-                                                          <td>{{$stc4->pd_code}}/{{$stc4->pd_name}} (คงเหลือ:{{number_format($stc4->pd_stc,2)}})</td>                       
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc4->id}})">
+                                                                {{$stc4->pd_code}}/{{$stc4->pd_name}} (คงเหลือ:{{number_format($stc4->pd_stc,2)}})
+                                                            </p>                                                           
+                                                         </td>                       
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -409,7 +441,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline4">    
                                       <div class="table-responsive">
-                                          <table id="tb_job5" class="table table-bordered table-striped">
+                                          <table id="tb_job5" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -420,19 +452,23 @@
                                             <tbody>
                                                 @foreach ($stc5 as $stc5)
                                                     <tr>    
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc5->id}})"></td>                                         
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc5->id}})"></td>                                         
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc5->pd_pic1)}}">
                                                             </a>
                                                             <a href="{{asset('/images/products/'.$stc5->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc5->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc5->pd_pic2)}}">
                                                             </a>                           
                                                           </td>                                                         
-                                                          <td>{{$stc5->pd_code}}/{{$stc5->pd_name}} (คงเหลือ:{{number_format($stc5->pd_stc,2)}})</td>                           
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc5->id}})">
+                                                                {{$stc5->pd_code}}/{{$stc5->pd_name}} (คงเหลือ:{{number_format($stc5->pd_stc,2)}})
+                                                            </p>                                                           
+                                                         </td>                           
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -441,7 +477,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline5">    
                                       <div class="table-responsive">
-                                          <table id="tb_job6" class="table table-bordered table-striped">
+                                          <table id="tb_job6" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -464,7 +500,11 @@
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic3)}}">
                                                             </a>                      
                                                           </td>
-                                                          <td>{{$stc6->pd_code}}/{{$stc6->pd_name}} (คงเหลือ:{{number_format($stc6->pd_stc,2)}})</td>                         
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc6->id}})">
+                                                                {{$stc6->pd_code}}/{{$stc6->pd_name}} (คงเหลือ:{{number_format($stc6->pd_stc,2)}})
+                                                            </p>                                                           
+                                                         </td>                         
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -473,7 +513,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline6">    
                                       <div class="table-responsive">
-                                          <table id="tb_job7" class="table table-bordered table-striped">
+                                          <table id="tb_job7" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -484,19 +524,23 @@
                                             <tbody>
                                                 @foreach ($stc7 as $stc7)
                                                     <tr>     
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc7->id}})"></td>                                        
+                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc7->id}})"></td>                                        
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc7->pd_pic1)}}">
                                                             </a>       
                                                             <a href="{{asset('/images/products/'.$stc7->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc7->pd_pic2)}}">
                                                             </a>     
                                                             <a href="{{asset('/images/products/'.$stc7->pd_pic3)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc7->pd_pic3)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc7->pd_pic3)}}">
                                                             </a>              
                                                           </td>
-                                                          <td>{{$stc7->pd_code}}/{{$stc7->pd_name}} (คงเหลือ:{{number_format($stc7->pd_stc,2)}})</td>                         
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc7->id}})">
+                                                                {{$stc7->pd_code}}/{{$stc7->pd_name}} (คงเหลือ:{{number_format($stc7->pd_stc,2)}})
+                                                            </p>                                                          
+                                                        </td>                         
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -505,7 +549,7 @@
                                     </div>
                                     <div class="tab-pane" id="timeline7">    
                                       <div class="table-responsive">
-                                          <table id="tb_job8" class="table table-bordered table-striped">
+                                          <table id="tb_job8" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
                                                 <th class="text-center">เพิ่ม</th>
@@ -528,7 +572,11 @@
                                                                 <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
                                                             </a>                             
                                                           </td>
-                                                          <td>{{$stc8->pd_code}}/{{$stc8->pd_name}} (คงเหลือ:{{number_format($stc8->pd_stc,2)}})</td>                       
+                                                          <td>
+                                                            <p onclick="addTolist({{$stc8->id}})">
+                                                                {{$stc8->pd_code}}/{{$stc8->pd_name}} (คงเหลือ:{{number_format($stc8->pd_stc,2)}})
+                                                            </p>                                                            
+                                                         </td>                       
                                                     </tr>
                                                 @endforeach
                                             </tbody>
@@ -557,7 +605,7 @@ $('.select2bs4').select2({
 });
 $(document).ready(function() {
     $('#tb_job1').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -570,7 +618,7 @@ $(document).ready(function() {
 });   
 $(document).ready(function() {
     $('#tb_job1_1').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -583,7 +631,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tb_job1_2').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -596,7 +644,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tb_job2').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -609,7 +657,7 @@ $(document).ready(function() {
 });  
 $(document).ready(function() {
     $('#tb_job2_1').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -622,7 +670,7 @@ $(document).ready(function() {
 }); 
 $(document).ready(function() {
     $('#tb_job2_2').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -635,7 +683,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tb_job3').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -648,7 +696,7 @@ $(document).ready(function() {
 }); 
 $(document).ready(function() {
     $('#tb_job4').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -661,7 +709,7 @@ $(document).ready(function() {
 }); 
 $(document).ready(function() {
     $('#tb_job5').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -674,7 +722,7 @@ $(document).ready(function() {
 }); 
 $(document).ready(function() {
     $('#tb_job6').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -687,7 +735,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tb_job7').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -700,7 +748,7 @@ $(document).ready(function() {
 });
 $(document).ready(function() {
     $('#tb_job8').DataTable({
-        "pageLength": 5,
+        "pageLength": 50,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]

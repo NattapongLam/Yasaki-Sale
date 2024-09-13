@@ -172,4 +172,32 @@ class ReportSaleOrder extends Controller
         }
         return view('reportsale.form-report-saleorder', compact('hd1','hd2','hd3','hd4'));
     }
+    public function ReportSaleOrderMonthList(Request $request)
+    {
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+            $hd1 = DB::table('vw_saleorderproductgroup_allmonth')
+            ->get();
+            $hd2 = DB::table('vw_saleorderprovince_all')
+            ->get();
+            $hd3 = DB::table('vw_saleorderall_allmonth')
+            ->get();
+            $hd4 = DB::table('vw_saleordercustomer_allmonth')
+            ->get();
+        }
+        else {
+            $hd1 = DB::table('vw_saleorderproductgroup_salemonth')
+            ->where('salecode',Auth::user()->username)
+            ->get();
+            $hd2 = DB::table('vw_saleorderprovince_sale')
+            ->where('salecode',Auth::user()->username)
+            ->get();
+            $hd3 = DB::table('vw_saleorderall_salemonth')
+            ->where('salecode',Auth::user()->username)
+            ->get();
+            $hd4 = DB::table('vw_saleordercustomer_salemonth')
+            ->where('salecode',Auth::user()->username)
+            ->get();
+        }
+        return view('reportsale.form-report-saleordermonth', compact('hd1','hd2','hd3','hd4'));
+    }
 }

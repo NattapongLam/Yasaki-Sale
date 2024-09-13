@@ -16,7 +16,7 @@
             <div class="card-body">
                 <h3 class="card-title" style="font-weight: bold">ค้างส่งสินค้า</h3><br><hr>
                 <div class="table-responsive">
-                    <table id="example1" class="table table-bordered table-striped">
+                    <table id="tb_job" class="table table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th>ลูกค้า</th>
@@ -53,5 +53,22 @@
 @endsection
 @push('scriptjs')
 <script>
+$(document).ready(function() {
+        $('#tb_job').DataTable({
+            "pageLength": 20,
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            //order by
+            "order": [
+                [4, "desc"]
+            ],
+        })
+    });
 </script>
 @endpush

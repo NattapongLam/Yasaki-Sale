@@ -159,4 +159,5 @@ Route::get('/report-sendproduct' , [App\Http\Controllers\ReportSaleOrder::class 
 Route::get('/report-billorder' , [App\Http\Controllers\ReportSaleOrder::class , 'ReportBillOrderList']);
 Route::get('/report-grouplow' , [App\Http\Controllers\ReportSaleOrder::class , 'ReportGroupLowList']);
 Route::get('/report-saleorder' , [App\Http\Controllers\ReportSaleOrder::class , 'ReportSaleOrderList']);
+Route::get('/report-saleordermonth' , [App\Http\Controllers\ReportSaleOrder::class , 'ReportSaleOrderMonthList']);
 Route::post('/getOrderBacklog' , [App\Http\Controllers\RequestOrderSale::class , 'getOrderBacklog']);
