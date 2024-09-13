@@ -27,7 +27,7 @@
                                 <th class="text-center">วันที่ต้องการส่ง</th>
                                 <th class="text-center">ใบจองสินค้า</th>
                                 <th class="text-center">บิลขาย</th>
-                                <th class="text-center">ดูเอกสาร</th>
+                                <th class="text-center"></th>
                                 <th class="text-center"></th>
                             </tr>
                         </thead>
@@ -53,12 +53,14 @@
                                     <td class="text-center">{{$item->salerequest_docuno}}</td>
                                     <td class="text-center">{{$item->saleorder_docuno}}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('requestorder.show',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i></a>
+                                        <a href="{{ route('requestorder.show',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>เอกสาร</a>
                                     </td>
                                     <td class="text-center">
                                         @if($item->requestorder_status_id == 1)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                         <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        @else
+                                        <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>แก้ไข</a>
                                         @endif       
                                     </td>
                                 </tr>
@@ -125,7 +127,7 @@ onDelete = (id) => {
 }
 $(document).ready(function() {
         $('#tb_job').DataTable({
-            "pageLength": 20,
+            "pageLength": 50,
             "lengthMenu": [
                 [10, 25, 50, -1],
                 [10, 25, 50, "All"]

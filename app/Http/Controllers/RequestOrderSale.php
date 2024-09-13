@@ -27,6 +27,7 @@ class RequestOrderSale extends Controller
             $hd = DB::table('requestorder_hd')
             ->leftjoin('requestorder_status','requestorder_hd.requestorder_status_id','=','requestorder_status.requestorder_status_id')
             ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
+            ->where('requestorder_hd.requestorder_status_id','<>',2)
             ->get();
         }
         else {
@@ -34,6 +35,7 @@ class RequestOrderSale extends Controller
             ->leftjoin('requestorder_status','requestorder_hd.requestorder_status_id','=','requestorder_status.requestorder_status_id')
             ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
             ->where('requestorder_hd_sale',Auth::user()->username)
+            ->where('requestorder_hd.requestorder_status_id','<>',2)
             ->get();
         }
          return view('requestordersale.form-open-requestorder', compact('hd'));
@@ -61,30 +63,46 @@ class RequestOrderSale extends Controller
         $stc1 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
         ->where('pd_code','<>','001--0001')
         ->where('pd_name','like','%VIP%')
+        ->where('pd_code','not like','001-B%')
+        ->where('pd_code','not like','001-KC%')
+        ->where('pd_code','not like','001-MKT%')
+        ->where('pd_code','not like','001-S%')
         ->get();
         $stc1_1 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
         ->where('pd_code','<>','001--0001')
         ->where('pd_name','like','%Super%')
+        ->where('pd_code','not like','001-A%')
+        ->where('pd_code','not like','001-KC%')
         ->get();
         $stc1_2 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_code','<>','001--0001')
+        ->where('pd_name','not like','%**%')
         ->where('pd_name','like','%Premium%')
+        ->where('pd_code','not like','001-A%')
+        ->where('pd_code','not like','001-MKT%')
         ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%ฟ้า%')
+        ->where('pd_code','not like','002-A%')
+        ->where('pd_code','not like','002-S%')
+        ->where('pd_code','not like','002-กต%')
+        ->where('pd_name','not like','%ยังไม่ได้ผลิต%')
         ->get();
         $stc2_1 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%ทอง%')
+        ->where('pd_code','not like','002-A%')
         ->get();
         $stc2_2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
@@ -94,26 +112,47 @@ class RequestOrderSale extends Controller
         $stc3 = Product::where('pd_group','ดุมจับสเตอร์')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','007-HP%')
+        ->where('pd_code','not like','007-RU%')
+        ->where('pd_code','not like','007-S%')
         ->get();
         $stc4 = Product::where('pd_group','ดุมหน้าดิส')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','008-HP%')
+        ->where('pd_code','not like','008-M%')
+        ->where('pd_code','not like','009-M%')
+        ->where('pd_code','not like','015-%')
         ->get();
         $stc5 = Product::where('pd_group','ดุมหลังดรัม')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','009-HP%')
+        ->where('pd_code','not like','009-LZ%')
+        ->where('pd_code','not like','009-NB%')
+        ->where('pd_code','not like','009-RU%')
+        ->where('pd_code','not like','009-S%')
+        ->where('pd_code','not like','009-VN%')
         ->get();
         $stc6 = Product::where('pd_group','แผงเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','007-%')
         ->get();
         $stc7 = Product::where('pd_group','ดุมหน้าดรัม')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','014-HP%')
+        ->where('pd_code','not like','014-RU%')
+        ->where('pd_code','not like','014-S%')
+        ->where('pd_code','not like','014-VN%')
         ->get();
         $stc8 = Product::where('pd_group','ดุมหลังดิส')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','015-M%')
+        ->where('pd_code','not like','008-%')
+        ->where('pd_code','not like','009-%')
         ->get();
         $docs_last = DB::table('requestorder_hd')
             ->where('requestorder_hd_docuno', 'like', '%' . date('ym') . '%')
@@ -227,30 +266,46 @@ class RequestOrderSale extends Controller
         $stc1 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
         ->where('pd_code','<>','001--0001')
         ->where('pd_name','like','%VIP%')
+        ->where('pd_code','not like','001-B%')
+        ->where('pd_code','not like','001-KC%')
+        ->where('pd_code','not like','001-MKT%')
+        ->where('pd_code','not like','001-S%')
         ->get();
         $stc1_1 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
         ->where('pd_code','<>','001--0001')
         ->where('pd_name','like','%Super%')
+        ->where('pd_code','not like','001-A%')
+        ->where('pd_code','not like','001-KC%')
         ->get();
         $stc1_2 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_code','<>','001--0001')
+        ->where('pd_name','not like','%**%')
         ->where('pd_name','like','%Premium%')
+        ->where('pd_code','not like','001-A%')
+        ->where('pd_code','not like','001-MKT%')
         ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%ฟ้า%')
+        ->where('pd_code','not like','002-A%')
+        ->where('pd_code','not like','002-S%')
+        ->where('pd_code','not like','002-กต%')
+        ->where('pd_name','not like','%ยังไม่ได้ผลิต%')
         ->get();
         $stc2_1 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%ทอง%')
+        ->where('pd_code','not like','002-A%')
         ->get();
         $stc2_2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
@@ -260,26 +315,47 @@ class RequestOrderSale extends Controller
         $stc3 = Product::where('pd_group','ดุมจับสเตอร์')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','007-HP%')
+        ->where('pd_code','not like','007-RU%')
+        ->where('pd_code','not like','007-S%')
         ->get();
         $stc4 = Product::where('pd_group','ดุมหน้าดิส')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','008-HP%')
+        ->where('pd_code','not like','008-M%')
+        ->where('pd_code','not like','009-M%')
+        ->where('pd_code','not like','015-%')
         ->get();
         $stc5 = Product::where('pd_group','ดุมหลังดรัม')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','009-HP%')
+        ->where('pd_code','not like','009-LZ%')
+        ->where('pd_code','not like','009-NB%')
+        ->where('pd_code','not like','009-RU%')
+        ->where('pd_code','not like','009-S%')
+        ->where('pd_code','not like','009-VN%')
         ->get();
         $stc6 = Product::where('pd_group','แผงเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','007-%')
         ->get();
         $stc7 = Product::where('pd_group','ดุมหน้าดรัม')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','014-HP%')
+        ->where('pd_code','not like','014-RU%')
+        ->where('pd_code','not like','014-S%')
+        ->where('pd_code','not like','014-VN%')
         ->get();
         $stc8 = Product::where('pd_group','ดุมหลังดิส')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
+        ->where('pd_code','not like','015-M%')
+        ->where('pd_code','not like','008-%')
+        ->where('pd_code','not like','009-%')
         ->get();
         $hd = DB::table('requestorder_hd')
         ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
@@ -320,7 +396,8 @@ class RequestOrderSale extends Controller
                 'requestorder_hd_reamrk' => $request->requestorder_hd_reamrk,
                 'requestorder_hd_duedate' => $request->requestorder_hd_duedate,
                 'update_at' => Carbon::now(),
-                'person_at' =>  Auth::user()->username
+                'person_at' =>  Auth::user()->username,
+                'requestorder_status_id' => 5
             ]);
             foreach($request->pd_code as $key => $val){
                 $pd = Product::where('pd_code',$val)->first();              
