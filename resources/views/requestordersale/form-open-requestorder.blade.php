@@ -15,15 +15,16 @@
             @endif
             <div class="card-body">
                 <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3><br><hr>
-                    <table id="example1" class="table table-bordered table-striped">
+                <div style="overflow-x:auto;">
+                    <table id="tb_job" class="table table-sm table-bordered table-striped">
                         <thead>
                             <tr>
                                 <th class="text-center">วันที่</th>
                                 <th class="text-center">สถานะ</th>                               
-                                <th class="text-center">เลขที่</th>
-                                <th class="text-center">วันที่ต้องการส่ง</th>
+                                <th class="text-center">เลขที่</th>                               
                                 <th class="text-center">ลูกค้า</th>
                                 <th class="text-center">พนักงาน</th>
+                                <th class="text-center">วันที่ต้องการส่ง</th>
                                 <th class="text-center">ใบจองสินค้า</th>
                                 <th class="text-center">บิลขาย</th>
                                 <th class="text-center">ดูเอกสาร</th>
@@ -45,10 +46,10 @@
                                         <span class="badge bg-success">{{$item->requestorder_status_name}}</span>
                                         @endif
                                     </td>                                
-                                    <td class="text-center">{{$item->requestorder_hd_docuno}}</td>
-                                    <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_duedate)->format('d/m/Y')}}</td>
+                                    <td class="text-center">{{$item->requestorder_hd_docuno}}</td>                                   
                                     <td class="text-center">{{$item->customer_name}}</td>
                                     <td class="text-center">{{$item->sa_name}}</td>
+                                    <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_duedate)->format('d/m/Y')}}</td>
                                     <td class="text-center">{{$item->salerequest_docuno}}</td>
                                     <td class="text-center">{{$item->saleorder_docuno}}</td>
                                     <td class="text-center">
@@ -64,6 +65,7 @@
                             @endforeach
                         </tbody>
                     </table>
+                </div>
             </div>
         </div>
     </div>
@@ -120,7 +122,23 @@ onDelete = (id) => {
             }
 
         });
-
-    }
+}
+$(document).ready(function() {
+        $('#tb_job').DataTable({
+            "pageLength": 20,
+            "lengthMenu": [
+                [10, 25, 50, -1],
+                [10, 25, 50, "All"]
+            ],
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ],
+            //order by
+            "order": [
+                [9, "desc"]
+            ],
+        })
+    });   
 </script>
 @endpush
