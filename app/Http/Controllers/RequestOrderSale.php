@@ -108,6 +108,8 @@ class RequestOrderSale extends Controller
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%REVOTEQ%')
+        ->where('pd_code','not like','002-A%')
+        ->where('pd_name','not like','%ยังไม่ได้ผลิต%')
         ->get();
         $stc3 = Product::where('pd_group','ดุมจับสเตอร์')
         ->where('pd_flag',true)
@@ -311,6 +313,8 @@ class RequestOrderSale extends Controller
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
         ->where('pd_name','like','%REVOTEQ%')
+        ->where('pd_code','not like','002-A%')
+        ->where('pd_name','not like','%ยังไม่ได้ผลิต%')
         ->get();
         $stc3 = Product::where('pd_group','ดุมจับสเตอร์')
         ->where('pd_flag',true)
