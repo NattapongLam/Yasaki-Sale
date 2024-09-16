@@ -44,6 +44,8 @@
                                         <span class="badge bg-info">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 4 )
                                         <span class="badge bg-success">{{$item->requestorder_status_name}}</span>
+                                        @elseif($item->requestorder_status_id == 5 )
+                                        <span class="badge bg-primary">{{$item->requestorder_status_name}}</span>
                                         @endif
                                     </td>                                
                                     <td class="text-center">{{$item->requestorder_hd_docuno}}</td>                                   

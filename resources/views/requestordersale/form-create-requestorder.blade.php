@@ -32,7 +32,7 @@
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
                                     <label for="requestorder_hd_date">วันที่</label>
-                                    <input type="date" class="form-control @error('requestorder_hd_date') is-invalid @enderror" id="requestorder_hd_date" name="requestorder_hd_date" value="{{ date('Y-m-d') }}" readonly>
+                                    <input type="date" class="form-control @error('requestorder_hd_date') is-invalid @enderror" id="requestorder_hd_date" name="requestorder_hd_date" value="{{ date('Y-m-d') }}">
                                     @error('requestorder_hd_date')
                                     <div id="requestorder_hd_date_validation" class="invalid-feedback">{{$message}}</div>
                                     @enderror
@@ -81,6 +81,7 @@
                         </div>
                         <div class="col-12">
                             <div class="row">
+                                <div class="listbox-area"></div>
                                 <div class="card-body">
                                 <ul class="nav nav-pills">
                                     <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">VIP</a></li>    

@@ -177,14 +177,15 @@ class RequestOrderSale extends Controller
      */
     public function store(Request $request)
     {
+        $d = date("ym",strtotime($request->requestorder_hd_date));
         $docs_last = DB::table('requestorder_hd')
-            ->where('requestorder_hd_docuno', 'like', '%' . date('ym') . '%')
+            ->where('requestorder_hd_docuno', 'like', '%' .$d . '%')
             ->orderBy('requestorder_hd_id', 'desc')->first();
         if ($docs_last) {
-            $docs = 'PR' . date('ym')  . str_pad($docs_last->requestorder_hd_number + 1, 4, '0', STR_PAD_LEFT);
+            $docs = 'PR' .$d  . str_pad($docs_last->requestorder_hd_number + 1, 4, '0', STR_PAD_LEFT);
             $docs_number = $docs_last->requestorder_hd_number + 1;
         } else {
-            $docs = 'PR' . date('ym')  . str_pad(1, 4, '0', STR_PAD_LEFT);
+            $docs = 'PR' .$d  . str_pad(1, 4, '0', STR_PAD_LEFT);
             $docs_number = 1;
         }
         $request->validate([
@@ -403,34 +404,36 @@ class RequestOrderSale extends Controller
                 'person_at' =>  Auth::user()->username,
                 'requestorder_status_id' => 5
             ]);
-            foreach($request->pd_code as $key => $val){
-                $pd = Product::where('pd_code',$val)->first();              
-                $dt = DB::table('requestorder_dt')->insert([
-                    'requestorder_hd_id' => $id,
-                    'pd_code' => $pd->pd_code,
-                    'pd_name' => $pd->pd_name,
-                    'pd_unit' => $pd->pd_unit,
-                    'pd_group' => $pd->pd_group,
-                    'pd_stc' => $pd->pd_stc,
-                    'pd_price' => $pd->pd_price,
-                    'requestorder_dt_qty' => $request->pd_qty[$key],
-                    'requestorder_dt_flag' => true,
-                    'create_at' => Carbon::now(),
-                    'person_at' => Auth::user()->username
-                ]);
-            }
-            // DB::commit();
-            $ck = DB::table('requestorder_dt')
-            ->where('requestorder_hd_id',$id)
-            ->where('requestorder_dt_flag',true)
-            ->get();
-            foreach ($ck as $key => $value) {
-                $up = DB::table('requestorder_dt')
-                ->where('requestorder_dt_id',$value->requestorder_dt_id)
-                ->update([
-                    'requestorder_dt_listno' => $key+1
-                ]);
-            }
+            if($request->pd_code){
+                foreach($request->pd_code as $key => $val){
+                    $pd = Product::where('pd_code',$val)->first();              
+                    $dt = DB::table('requestorder_dt')->insert([
+                        'requestorder_hd_id' => $id,
+                        'pd_code' => $pd->pd_code,
+                        'pd_name' => $pd->pd_name,
+                        'pd_unit' => $pd->pd_unit,
+                        'pd_group' => $pd->pd_group,
+                        'pd_stc' => $pd->pd_stc,
+                        'pd_price' => $pd->pd_price,
+                        'requestorder_dt_qty' => $request->pd_qty[$key],
+                        'requestorder_dt_flag' => true,
+                        'create_at' => Carbon::now(),
+                        'person_at' => Auth::user()->username
+                    ]);
+                }
+                // DB::commit();
+                $ck = DB::table('requestorder_dt')
+                ->where('requestorder_hd_id',$id)
+                ->where('requestorder_dt_flag',true)
+                ->get();
+                foreach ($ck as $key => $value) {
+                    $up = DB::table('requestorder_dt')
+                    ->where('requestorder_dt_id',$value->requestorder_dt_id)
+                    ->update([
+                        'requestorder_dt_listno' => $key+1
+                    ]);
+                }
+            }           
             DB::commit();
             return redirect()->route('requestorder.index')->with('success', 'บันทึกเรียบร้อย');
         } catch (\Exception $e) {
