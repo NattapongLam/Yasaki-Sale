@@ -748,11 +748,16 @@ addTolist = (id) => {
         },
         dataType: "json",
         success: function(data) {               
+            let currentItemId = $('.list_product_id').toArray();
+            console.log(currentItemId)
+            if (currentItemId.map(item => item.value).includes(data.pd.pd_code)) {              
+            }
+            else{
             $numbertd = $('#tb_productlist tr').length + 1;
             $('#tb_productlist').append(`
             <tr style="background-color:#F8F8FF" class="${data.pd.id}">                 
                 <td class="text-center">
-                    <input type="hidden" class="list_product_id" name="pd_id[]" value="${data.pd.id}">
+                    <input type="hidden"  name="pd_id[]" value="${data.pd.id}">
                     <input type="hidden" class="list_product_id" name="pd_code[]" value="${data.pd.pd_code}">
                     ${$numbertd}
                 </td>   
@@ -762,7 +767,9 @@ addTolist = (id) => {
                     <button type="button" class="btn btn-danger btn-sm" onclick="removeTolist('${data.pd.id}')"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
-            `)                                                         
+            `)  
+            }
+                                                                   
         }
     }) 
 }
