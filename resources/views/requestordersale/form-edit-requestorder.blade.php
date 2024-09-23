@@ -156,7 +156,7 @@
                                           <table id="tb_job1" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                              <th class="text-center">เพิ่ม</th>
+                                              {{-- <th class="text-center">เพิ่ม</th> --}}
                                               <th class="text-center">รูปสินค้า</th>
                                               <th class="text-center">สินค้า</th>
                                             </tr>
@@ -164,7 +164,7 @@
                                             <tbody>
                                                 @foreach ($stc1 as $stc1)
                                                     <tr>    
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1->id}})"></td>                                         
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1->id}})"></td>                                          --}}
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
                                                               <img width="20px" src="{{asset('/images/products/'.$stc1->pd_pic1)}}">
@@ -192,7 +192,7 @@
                                             <table id="tb_job1_1" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                               </tr>
@@ -200,7 +200,7 @@
                                               <tbody>
                                                   @foreach ($stc1_1 as $stc1_1)
                                                       <tr>    
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_1->id}})"></td>                                         
+                                                          {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_1->id}})"></td>                                          --}}
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
@@ -228,7 +228,7 @@
                                             <table id="tb_job1_2" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                               </tr>
@@ -236,7 +236,7 @@
                                               <tbody>
                                                   @foreach ($stc1_2 as $stc1_2)
                                                       <tr>    
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_2->id}})"></td>                                         
+                                                          {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc1_2->id}})"></td>                                          --}}
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc1_1->pd_pic1)}}">
@@ -264,7 +264,7 @@
                                           <table id="tb_job2" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -272,7 +272,7 @@
                                             <tbody>
                                                 @foreach ($stc2 as $stc2)
                                                     <tr>          
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2->id}})"></td>                                      
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2->id}})"></td>                                       --}}
                                                         <td class="text-center">
                                                           <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
                                                               <img width="20px" src="{{asset('/images/products/'.$stc2->pd_pic1)}}">
@@ -300,7 +300,7 @@
                                             <table id="tb_job2_1" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
-                                                  <th class="text-center">เพิ่ม</th>
+                                                  {{-- <th class="text-center">เพิ่ม</th> --}}
                                                   <th class="text-center">รูปสินค้า</th>
                                                   <th class="text-center">สินค้า</th>
                                               </tr>
@@ -308,7 +308,7 @@
                                               <tbody>
                                                   @foreach ($stc2_1 as $stc2_1)
                                                       <tr>          
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_1->id}})"></td>                                      
+                                                          {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_1->id}})"></td>                                       --}}
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc2_1->pd_pic1)}}">
@@ -336,7 +336,7 @@
                                             <table id="tb_job2_2" class="table table-sm table-bordered table-striped">
                                               <thead>
                                               <tr>
-                                                  <th class="text-center">เพิ่ม</th>
+                                                  {{-- <th class="text-center">เพิ่ม</th> --}}
                                                   <th class="text-center">รูปสินค้า</th>
                                                   <th class="text-center">สินค้า</th>
                                               </tr>
@@ -344,7 +344,7 @@
                                               <tbody>
                                                   @foreach ($stc2_2 as $stc2_2)
                                                       <tr>          
-                                                          <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_2->id}})"></td>                                      
+                                                          {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc2_2->id}})"></td>                                       --}}
                                                           <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc2_2->pd_pic1)}}">
@@ -372,7 +372,7 @@
                                           <table id="tb_job3" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -380,7 +380,7 @@
                                             <tbody>
                                                 @foreach ($stc3 as $stc3)
                                                     <tr>       
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc3->id}})"></td>                                       
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc3->id}})"></td>                                        --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc3->pd_pic1)}}">
@@ -408,7 +408,7 @@
                                           <table id="tb_job4" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -416,7 +416,7 @@
                                             <tbody>
                                                 @foreach ($stc4 as $stc4)
                                                     <tr>              
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc4->id}})"></td>                               
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc4->id}})"></td>                                --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc4->pd_pic1)}}">
@@ -444,7 +444,7 @@
                                           <table id="tb_job5" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -452,7 +452,7 @@
                                             <tbody>
                                                 @foreach ($stc5 as $stc5)
                                                     <tr>    
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc5->id}})"></td>                                         
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc5->id}})"></td>                                          --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc5->pd_pic1)}}">
@@ -480,7 +480,7 @@
                                           <table id="tb_job6" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -488,16 +488,16 @@
                                             <tbody>
                                                 @foreach ($stc6 as $stc6)
                                                     <tr>        
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc6->id}})"></td>                                     
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc6->id}})"></td>                                      --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc6->pd_pic1)}}">
                                                             </a>        
                                                             <a href="{{asset('/images/products/'.$stc6->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc6->pd_pic2)}}">
                                                             </a>      
                                                             <a href="{{asset('/images/products/'.$stc6->pd_pic3)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc6->pd_pic3)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc6->pd_pic3)}}">
                                                             </a>                      
                                                           </td>
                                                           <td>
@@ -516,7 +516,7 @@
                                           <table id="tb_job7" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -524,7 +524,7 @@
                                             <tbody>
                                                 @foreach ($stc7 as $stc7)
                                                     <tr>     
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc7->id}})"></td>                                        
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 20px" onclick="addTolist({{$stc7->id}})"></td>                                         --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
                                                                 <img width="20px" src="{{asset('/images/products/'.$stc7->pd_pic1)}}">
@@ -552,7 +552,7 @@
                                           <table id="tb_job8" class="table table-sm table-bordered table-striped">
                                             <thead>
                                             <tr>
-                                                <th class="text-center">เพิ่ม</th>
+                                                {{-- <th class="text-center">เพิ่ม</th> --}}
                                                 <th class="text-center">รูปสินค้า</th>
                                                 <th class="text-center">สินค้า</th>
                                             </tr>
@@ -560,16 +560,16 @@
                                             <tbody>
                                                 @foreach ($stc8 as $stc8)
                                                     <tr>    
-                                                        <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc8->id}})"></td>                                         
+                                                        {{-- <td class="text-center"><img src="{{asset('images/accept.png')}}" style="width: 30px" onclick="addTolist({{$stc8->id}})"></td>                                          --}}
                                                         <td class="text-center">
                                                             <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic1)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic1)}}">
                                                             </a>   
                                                             <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic2)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic2)}}">
                                                             </a>  
                                                             <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
-                                                                <img width="100px" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
+                                                                <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
                                                             </a>                             
                                                           </td>
                                                           <td>
