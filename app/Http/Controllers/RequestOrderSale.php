@@ -66,6 +66,7 @@ class RequestOrderSale extends Controller
         ->where('pd_name','not like','%**%')
         ->where('pd_code','<>','001--0001')
         ->where('pd_name','like','%VIP%')
+        ->where('pd_name','not like','%เลิกขาย%')
         ->where('pd_code','not like','001-B%')
         ->where('pd_code','not like','001-KC%')
         ->where('pd_code','not like','001-MKT%')
