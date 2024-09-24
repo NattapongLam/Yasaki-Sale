@@ -472,6 +472,14 @@ class RequestOrderSale extends Controller
             'update_at' => Carbon::now(),
             'person_at' =>  Auth::user()->username
         ]);
+        $dt =  DB::table('requestorder_dt')->where('requestorder_dt_id', $sku)->first();
+        $hd = DB::table('requestorder_hd')
+        ->where('requestorder_hd_id',$dt->requestorder_hd_id)
+        ->update([
+            'update_at' => Carbon::now(),
+            'person_at' =>  Auth::user()->username,
+            'requestorder_status_id' => 5
+        ]);
         return response()->json([
             'status' => true
         ]);

@@ -25,6 +25,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
   <!-- Toastr -->
   <link rel="stylesheet" href="{{ asset('assets/libs/toastr/toastr.min.css') }}">
+  <style>
+  </style>
   @livewireStyles
 </head>
 <body class="hold-transition sidebar-mini">

@@ -155,6 +155,9 @@ class ReportSaleOrder extends Controller
             ->get();
             $hd4 = DB::table('vw_saleordercustomer_all')
             ->get();
+            $hd5 = DB::table('vw_saleorderallmonthlist_all')
+            ->where('new_netamount','>',0)
+            ->get();
         }
         else {
             $hd1 = DB::table('vw_saleorderproductgroup_sale')
@@ -169,8 +172,12 @@ class ReportSaleOrder extends Controller
             $hd4 = DB::table('vw_saleordercustomer_sale')
             ->where('salecode',Auth::user()->username)
             ->get();
+            $hd5 = DB::table('vw_saleorderallmonthlist_sale')
+            ->where('salecode',Auth::user()->username)
+            ->where('new_netamount','>',0)
+            ->get();
         }
-        return view('reportsale.form-report-saleorder', compact('hd1','hd2','hd3','hd4'));
+        return view('reportsale.form-report-saleorder', compact('hd1','hd2','hd3','hd4','hd5'));
     }
     public function ReportSaleOrderMonthList(Request $request)
     {
