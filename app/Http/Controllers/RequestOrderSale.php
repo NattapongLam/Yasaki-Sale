@@ -136,6 +136,7 @@ class RequestOrderSale extends Controller
         ->where('pd_code','not like','009-RU%')
         ->where('pd_code','not like','009-S%')
         ->where('pd_code','not like','009-VN%')
+        ->where('pd_code','not like','008-HP%')
         ->get();
         $stc6 = Product::where('pd_group','แผงเบรค')
         ->where('pd_flag',true)

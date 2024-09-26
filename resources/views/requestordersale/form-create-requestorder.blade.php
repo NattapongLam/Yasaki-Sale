@@ -3,10 +3,10 @@
 <style>
 .listbox-container {
     width: 100%; /* ใช้ความกว้างเต็ม */
-    max-height: 500px; /* กำหนดความสูงสูงสุด */
+    max-height: 350px; /* กำหนดความสูงสูงสุด */
     overflow-y: auto; /* เปิดการเลื่อนในแนวตั้ง */
     padding: 1px;
-    font-size: 15px; /* ปรับขนาดตัวอักษร */
+    font-size: 18px; /* ปรับขนาดตัวอักษร */
     background-color: #F8F8FF; /* สีพื้นหลัง */
     border: 1px solid #ccc; /* ขอบ */
     border-radius: 1px; /* มุมโค้ง */
@@ -15,8 +15,8 @@
 .listbox-item {
     display: flex; /* ใช้ Flexbox */
     align-items: center; /* จัดแนวกลางในแนวตั้ง */
-    padding: 1px; /* ระยะห่าง */
-    border-bottom: 1px solid #e0e0e0; /* ขอบด้านล่าง */
+    padding: 4px; /* ระยะห่าง */
+    border-bottom: 2px solid #e0e0e0; /* ขอบด้านล่าง */
 }
 
 .listbox-item:last-child {
@@ -124,10 +124,10 @@
                                 </table>
                             </div>                                                                                             
                         </div>
-                        <div class="col-12">                            
+                        <div class="row">                            
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-5">
+                                        <div class="col-6">
                                             <div class="card-body">
                                             <ul class="nav nav-pills">
                                                 <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">VIP</a></li>    
@@ -142,7 +142,7 @@
                                                 <li class="nav-item"><a class="nav-link" href="#timeline5" data-toggle="tab">แผงเบรค</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="#timeline6" data-toggle="tab">ดุมหน้าดรัม</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="#timeline7" data-toggle="tab">ดุมหลังดิส</a></li>
-                                            </ul>
+                                            </ul><br>
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="activity">
                                                     <input type="text" id="searchBox1" placeholder="ค้นหาสินค้า..." onkeyup="filterList1()" class="form-control" style="margin-bottom: 5px;">
@@ -155,10 +155,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc1->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc1->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc1->pd_code}} {{$stc1->pd_name}} คงเหลือ:{{number_format($stc1->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc1->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    @if($stc1->pd_pic2)
+                                                                        <a href="{{asset('/images/products/'.$stc1->pd_pic2)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                    @endif   
+                                                                    @if ($stc1->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc1->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif                                                            
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc1->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
@@ -175,10 +190,10 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc1->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>
-                                                                
-                                                            </div>
+                                                                                                                            
+                                                            </div>                                                            
                                                         @endforeach
                                                     </div>
                                                   {{-- <div class="table-responsive">
@@ -232,10 +247,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc1_1->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc1_1->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc1_1->pd_code}} {{$stc1_1->pd_name}} คงเหลือ:{{number_format($stc1_1->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc1_1->pd_pic1)
+                                                                        <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if($stc1_1->pd_pic2)
+                                                                        <a href="{{asset('/images/products/'.$stc1_1->pd_pic2)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if ($stc1_1->pd_pic3)
+                                                                        <a href="{{asset('/images/products/'.$stc1_1->pd_pic3)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif     
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc1_1->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
@@ -252,7 +282,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc1_1->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -306,10 +336,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc1_2->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc1_2->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc1_2->pd_code}} {{$stc1_2->pd_name}} คงเหลือ:{{number_format($stc1_2->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc1_2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc1_2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc1_2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc1_2->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
@@ -326,7 +371,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc1_2->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -375,10 +420,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc2->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc2->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc2->pd_code}} {{$stc2->pd_name}} คงเหลือ:{{number_format($stc2->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc2->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
@@ -395,7 +455,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc2->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -444,10 +504,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc2_1->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc2_1->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc2_1->pd_code}} {{$stc2_1->pd_name}} คงเหลือ:{{number_format($stc2_1->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc2_1->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2_1->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2_1->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif 
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc2_1->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
@@ -464,7 +539,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc2_1->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -513,10 +588,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc2_2->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc2_2->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc2_2->pd_code}} {{$stc2_2->pd_name}} คงเหลือ:{{number_format($stc2_2->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc2_2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2_2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2_2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif  
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc2_2->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
@@ -533,7 +623,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc2_2->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -582,10 +672,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc3->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc3->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc3->pd_code}} {{$stc3->pd_name}} คงเหลือ:{{number_format($stc3->pd_stc,2)}}
-                                                                    </p>
-                                                                    <div class="listbox-image">
+                                                                    </p>    
+                                                                    @if ($stc3->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc3->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc3->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif                                                          
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc3->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
@@ -602,7 +707,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc3->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -651,10 +756,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc4->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc4->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc4->pd_code}} {{$stc4->pd_name}} คงเหลือ:{{number_format($stc4->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc4->pd_pic1)
+                                                                        <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if($stc4->pd_pic2)
+                                                                        <a href="{{asset('/images/products/'.$stc4->pd_pic2)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if ($stc4->pd_pic3)
+                                                                        <a href="{{asset('/images/products/'.$stc4->pd_pic3)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif 
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc4->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
@@ -671,7 +791,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc4->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -720,10 +840,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc5->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc5->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc5->pd_code}} {{$stc5->pd_name}} คงเหลือ:{{number_format($stc5->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                        @if ($stc5->pd_pic1)
+                                                                        <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if($stc5->pd_pic2)
+                                                                        <a href="{{asset('/images/products/'.$stc5->pd_pic2)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if ($stc5->pd_pic3)
+                                                                        <a href="{{asset('/images/products/'.$stc5->pd_pic3)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif        
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc5->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
@@ -740,7 +875,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc5->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -789,10 +924,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc6->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc6->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc6->pd_code}} {{$stc6->pd_name}} คงเหลือ:{{number_format($stc6->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc6->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc6->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc6->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif    
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc6->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
@@ -809,7 +959,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc6->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -858,10 +1008,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc7->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc7->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc7->pd_code}} {{$stc7->pd_name}} คงเหลือ:{{number_format($stc7->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc7->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc7->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc7->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif     
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc7->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
@@ -878,7 +1043,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc7->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -927,10 +1092,25 @@
                                                                 </div>                                                               
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
-                                                                    <p onclick="selectAndAddTolist({{$stc8->id}})">
+                                                                    <p onclick="selectAndAddTolist({{$stc8->id}})" style="display: inline; margin-right: 10px;">
                                                                         {{$stc8->pd_code}} {{$stc8->pd_name}} คงเหลือ:{{number_format($stc8->pd_stc,2)}}
                                                                     </p>
-                                                                    <div class="listbox-image">
+                                                                    @if ($stc8->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc8->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc8->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    {{-- <div class="listbox-image">
                                                                         <!-- รูปสินค้า -->
                                                                         @if ($stc8->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
@@ -947,7 +1127,7 @@
                                                                             <img class="product-img" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
                                                                         </a>
                                                                         @endif                              
-                                                                    </div>
+                                                                    </div> --}}
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -988,7 +1168,7 @@
                                               </div>
                                             </div>
                                         </div>
-                                        <div class="col-7">
+                                        <div class="col-6">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <table class="table table-sm table-bordered table-striped">
