@@ -22,13 +22,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
   @livewireStyles
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="sidebar-collapse layout-top-nav sidebar-closed" style="height: auto;">
 <div class="wrapper">
-
   <!-- Navbar -->
   @include('layouts.header')
   <!-- /.navbar -->
-  @include('layouts.sidebar')
+  {{-- @include('layouts.sidebar') --}}
   <!-- Main Sidebar Container -->
  
 
@@ -43,42 +42,56 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <h5 style="text-align: center">ผลิตสินค้าที่มีคุณภาพ ได้มาตรฐาน บริหารต้นทุนอย่างมีประสิทธิภาพ ส่งมอบสินค้าถูกต้อง ทันเวลา พัฒนาต่อเนื่อง เพื่อความพึงพอใจของลูกค้า</h5>  
             <hr>
             <div class="row">
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{route('requestorder.create')}}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       ใบสั่งซื้อ
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
               </div>
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{route('requestorder.index')}}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       รายการสั่งซื้อ
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
               </div>
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{route('stockcard.index')}}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       สต็อคสินค้า
-                    </h4>                 
+                    </h5>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ url('/requestorder-list') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h5>
+                     ยอดจองสินค้า
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -86,43 +99,57 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </div>
             </div>  
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-12">
-                <a href="{{ url('/requestorder-list') }}" class="nav-link">
-                <div class="info-box">
-                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
-                  <div class="info-box-content">
-                    <h4>
-                     ยอดจองสินค้า
-                    </h4>                 
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                </a>
-              </div>
-              <div class="col-md-4 col-sm-6 col-12">
+            <div class="row">            
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{ url('/report-sendproduct') }}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       ยอดส่งของลูกค้า
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
               </div>
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{ url('/report-billorder') }}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       เปิดบิลลูกค้า
-                    </h4>                 
+                    </h5>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ url('/report-grouplow') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h5>
+                    กลุ่มสินค้ายอดผิดปกติ
+                    </h5>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12">
+                <a href="{{ url('/report-backlog') }}" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-success"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h5>
+                      ค้างส่งของลูกค้า
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
@@ -130,78 +157,65 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </div>
             </div> 
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-12">
-                <a href="{{ url('/report-grouplow') }}" class="nav-link">
-                <div class="info-box">
-                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
-                  <div class="info-box-content">
-                    <h4>
-                    กลุ่มสินค้ายอดผิดปกติ
-                    </h4>                 
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                </a>
-              </div>
-              <div class="col-md-4 col-sm-6 col-12">
-                <a href="{{ url('/report-backlog') }}" class="nav-link">
-                <div class="info-box">
-                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
-                  <div class="info-box-content">
-                    <h4>
-                      ค้างส่งของลูกค้า
-                    </h4>                 
-                  </div>
-                  <!-- /.info-box-content -->
-                </div>
-                <!-- /.info-box -->
-                </a>
-              </div>
-              <div class="col-md-4 col-sm-6 col-12">
+            <div class="row">                          
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{ url('/report-saleorder') }}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                       ภาพรวมยอดขาย
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
               </div>
-            </div>
-            <div class="row">
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="{{ url('/report-saleordermonth') }}" class="nav-link">
                 <div class="info-box">
-                  <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                     ยอดขายประจำเดือน
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
               </div>
-              <div class="col-md-4 col-sm-6 col-12">
+              <div class="col-md-3 col-sm-6 col-12">
                 <a href="https://demo.revoteq-yasaki.com/isosals" class="nav-link">
                 <div class="info-box">
-                  <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
-                    <h4>
+                    <h5>
                      เอกสาร ISO
-                    </h4>                 
+                    </h5>                 
                   </div>
                   <!-- /.info-box-content -->
                 </div>
                 <!-- /.info-box -->
                 </a>
+              </div>
+              <div class="col-md-3 col-sm-6 col-12">
+                <a href="javascript:void();" class="nav-link" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                <div class="info-box">
+                  <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h5>
+                    ออกจากระบบ
+                    </h5>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                  @csrf
+                </form>
               </div>
             </div>
           </div>

@@ -90,6 +90,18 @@ class RequestOrderSale extends Controller
         ->where('pd_code','not like','001-A%')
         ->where('pd_code','not like','001-MKT%')
         ->get();
+        $stc1_3 = Product::where('pd_group','ผ้าเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
+        ->where('pd_code','<>','001--0001')
+        ->where('pd_code','like','001-52%')
+        ->where('pd_code','not like','001-B%')
+        ->where('pd_code','not like','001-KC%')
+        ->where('pd_code','not like','001-MKT%')
+        ->where('pd_code','not like','001-S%')
+        ->where('pd_name','not like','%เลิกขาย%')
+        ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
         ->where('pd_name','not like','%***%')
@@ -168,7 +180,7 @@ class RequestOrderSale extends Controller
             $docs = 'PR' . date('ym')  . str_pad(1, 4, '0', STR_PAD_LEFT);
             $docs_number = 1;
         }
-        return view('requestordersale.form-create-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','cust','sale','docs','docs_number','stc1_1','stc1_2','stc2_1','stc2_2'));
+        return view('requestordersale.form-create-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','cust','sale','docs','docs_number','stc1_1','stc1_2','stc2_1','stc2_2','stc1_3'));
     }
 
     /**
@@ -278,6 +290,7 @@ class RequestOrderSale extends Controller
         ->where('pd_code','not like','001-KC%')
         ->where('pd_code','not like','001-MKT%')
         ->where('pd_code','not like','001-S%')
+        ->where('pd_name','not like','%เลิกขาย%')
         ->get();
         $stc1_1 = Product::where('pd_group','ผ้าเบรค')
         ->where('pd_flag',true)
@@ -296,6 +309,18 @@ class RequestOrderSale extends Controller
         ->where('pd_name','like','%Premium%')
         ->where('pd_code','not like','001-A%')
         ->where('pd_code','not like','001-MKT%')
+        ->get();
+        $stc1_3 = Product::where('pd_group','ผ้าเบรค')
+        ->where('pd_flag',true)
+        ->where('pd_name','not like','%***%')
+        ->where('pd_name','not like','%**%')
+        ->where('pd_code','<>','001--0001')
+        ->where('pd_code','like','001-52%')
+        ->where('pd_code','not like','001-B%')
+        ->where('pd_code','not like','001-KC%')
+        ->where('pd_code','not like','001-MKT%')
+        ->where('pd_code','not like','001-S%')
+        ->where('pd_name','not like','%เลิกขาย%')
         ->get();
         $stc2 = Product::where('pd_group','ดิสเบรค')
         ->where('pd_flag',true)
@@ -343,6 +368,7 @@ class RequestOrderSale extends Controller
         ->where('pd_code','not like','009-RU%')
         ->where('pd_code','not like','009-S%')
         ->where('pd_code','not like','009-VN%')
+        ->where('pd_code','not like','008-HP%')
         ->get();
         $stc6 = Product::where('pd_group','แผงเบรค')
         ->where('pd_flag',true)
@@ -383,7 +409,7 @@ class RequestOrderSale extends Controller
         $bill =DB::table('vw_billorder_pricetotal')
         ->where('arcode',$hd->customer_code)
         ->first();
-        return view('requestordersale.form-edit-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','hd','dt','stc1_1','stc1_2','stc2_1','stc2_2','product','bill'));
+        return view('requestordersale.form-edit-requestorder', compact('stc1','stc2','stc3','stc4','stc5','stc6','stc7','stc8','hd','dt','stc1_1','stc1_2','stc2_1','stc2_2','product','bill','stc1_3'));
     }
 
     /**

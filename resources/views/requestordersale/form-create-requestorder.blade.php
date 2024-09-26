@@ -1,12 +1,14 @@
 @extends('layouts.main')
 @section('content')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<link href="https://cdn.jsdelivr.net/npm/select2-bootstrap4-theme@1.1.1/dist/select2-bootstrap4.min.css" rel="stylesheet" />
 <style>
 .listbox-container {
     width: 100%; /* ใช้ความกว้างเต็ม */
     max-height: 350px; /* กำหนดความสูงสูงสุด */
     overflow-y: auto; /* เปิดการเลื่อนในแนวตั้ง */
     padding: 1px;
-    font-size: 18px; /* ปรับขนาดตัวอักษร */
+    font-size: 17px; /* ปรับขนาดตัวอักษร */
     background-color: #F8F8FF; /* สีพื้นหลัง */
     border: 1px solid #ccc; /* ขอบ */
     border-radius: 1px; /* มุมโค้ง */
@@ -61,7 +63,7 @@
                                     <div class="col-12 col-md-12">
                                         <div class="form-group">
                                             <label for="customer_code">ลูกค้า</label>
-                                            <select class="form-control select2bs4 @error('customer_code') is-invalid @enderror" id="customer_code" name="customer_code" required autofocus onchange="selOrderlog(this.value)">
+                                            <select class="form-control select2 @error('customer_code') is-invalid @enderror" id="customer_code" name="customer_code" required autofocus onchange="selOrderlog(this.value)">
                                                 <option value="0">ชื่อร้านค้า</option>
                                                 @foreach ($cust as $cust)
                                                 <option value="{{$cust->customer_code}}">{{$cust->customer_name}} ยอดในเดือน : {{number_format($cust->total)}}</option>
@@ -142,7 +144,8 @@
                                                 <li class="nav-item"><a class="nav-link" href="#timeline5" data-toggle="tab">แผงเบรค</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="#timeline6" data-toggle="tab">ดุมหน้าดรัม</a></li>
                                                 <li class="nav-item"><a class="nav-link" href="#timeline7" data-toggle="tab">ดุมหลังดิส</a></li>
-                                            </ul><br>
+                                                <li class="nav-item"><a class="nav-link" href="#activity3" data-toggle="tab">แพ็คเขียว</a></li>    
+                                            </ul>
                                             <div class="tab-content">
                                                 <div class="active tab-pane" id="activity">
                                                     <input type="text" id="searchBox1" placeholder="ค้นหาสินค้า..." onkeyup="filterList1()" class="form-control" style="margin-bottom: 5px;">
@@ -1165,6 +1168,40 @@
                                                       </table>
                                                     </div>                        --}}
                                                 </div>
+                                                <div class="tab-pane" id="activity3">
+                                                    <input type="text" id="searchBox2" placeholder="ค้นหาสินค้า..." onkeyup="filterList2()" class="form-control" style="margin-bottom: 5px;">
+                                                    <div class="listbox-container"id="productList2">
+                                                        @foreach ($stc1_3 as $stc1_3)
+                                                            <div class="listbox-item">
+                                                                <div class="listbox-select">
+                                                                    <!-- ปุ่ม checkbox ที่เรียกฟังก์ชัน addTolist -->
+                                                                    <input type="checkbox" class="select-product" id="checkbox-{{$stc1_3->id}}" value="{{$stc1_3->id}}" onchange="handleCheckboxChange(this, {{$stc1_3->id}})">
+                                                                </div>                                                               
+                                                                <div class="listbox-info">
+                                                                    <!-- รายละเอียดสินค้า -->
+                                                                    <p onclick="selectAndAddTolist({{$stc1_3->id}})" style="display: inline; margin-right: 10px;">
+                                                                        {{$stc1_3->pd_code}} {{$stc1_3->pd_name}} คงเหลือ:{{number_format($stc1_3->pd_stc,2)}}
+                                                                    </p>
+                                                                    @if ($stc1_3->pd_pic1)
+                                                                        <a href="{{asset('/images/products/'.$stc1_3->pd_pic1)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if($stc1_3->pd_pic2)
+                                                                        <a href="{{asset('/images/products/'.$stc1_3->pd_pic2)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif
+                                                                        @if ($stc1_3->pd_pic3)
+                                                                        <a href="{{asset('/images/products/'.$stc1_3->pd_pic3)}}" target="_blank">
+                                                                            <i class="fas fa-image" style="display: inline;"></i>
+                                                                        </a>
+                                                                        @endif     
+                                                                </div>                                                         
+                                                            </div>
+                                                        @endforeach
+                                                    </div>
+                                                  </div>
                                               </div>
                                             </div>
                                         </div>
@@ -1186,6 +1223,7 @@
                                                             <tr>        
                                                                 <th colspan="2"></th>                                  
                                                                 <th><p>ผลรวม: <span id="sum_total">0</span></p></th>
+                                                                <th></th>      
                                                             </tr>
                                                         </tfoot>                                  
                                                     </table>
@@ -1223,12 +1261,20 @@
 @endsection
 @push('scriptjs')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 <script>
-$(function () {
-$('.select2').select2()
-$('.select2bs4').select2({
-    theme: 'bootstrap4'
-})
+$(document).ready(function() {
+    $('#customer_code').select2({
+        placeholder: "ค้นหาร้านค้า",
+        allowClear: true
+    });
+});
+$(document).ready(function() {
+    $('#customer_code').select2({
+        placeholder: "ค้นหาร้านค้า",
+        allowClear: true,
+        theme: 'bootstrap4' // ใช้ธีม bootstrap4
+    });
 });
 $(document).ready(function() {
     $('#tb_job1').DataTable({

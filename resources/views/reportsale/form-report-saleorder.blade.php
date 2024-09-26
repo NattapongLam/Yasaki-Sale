@@ -92,6 +92,7 @@
                                 </tbody>
                             </table>
                         </div>
+                        <canvas id="stackedBarChart"></canvas>
                     </div>
                 </div> 
                 <div class="row">
@@ -297,5 +298,53 @@
             }
         }
     });
+    document.addEventListener('DOMContentLoaded', function () {
+    var ctx = document.getElementById('stackedBarChart').getContext('2d');
+
+    // ข้อมูลที่ดึงจาก Laravel
+    var data = {
+        labels: [ 
+            @foreach($hd6->unique('province_name') as $item)
+                '{{$item->province_name}}',
+            @endforeach
+        ],
+        datasets: [
+            @foreach($hd6->unique('pdgp_name') as $group)
+                {
+                    label: '{{$group->pdgp_name}}',
+                    data: [
+                        @foreach($hd6->where('pdgp_name', $group->pdgp_name) as $item)
+                            {{ $item->new_netamount }},
+                        @endforeach
+                    ],
+                    backgroundColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}', // สุ่มสี
+                },
+            @endforeach
+        ]
+    };
+
+    // วาดกราฟ
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: data,
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+            scales: {
+                x: {
+                    stacked: true,
+                },
+                y: {
+                    stacked: true,
+                }
+            }
+        }
+    });
+});
+
 </script>
 @endpush

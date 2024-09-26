@@ -25,17 +25,16 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="{{asset('assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
   <!-- Toastr -->
   <link rel="stylesheet" href="{{ asset('assets/libs/toastr/toastr.min.css') }}">
-  <style>
-  </style>
+<style>
+</style>
   @livewireStyles
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="sidebar-collapse layout-top-nav sidebar-closed" style="height: auto;">
 <div class="wrapper">
-
   <!-- Navbar -->
   @include('layouts.header')
   <!-- /.navbar -->
-  @include('layouts.sidebar')
+  {{-- @include('layouts.sidebar') --}}
   <!-- Main Sidebar Container -->
  
 
