@@ -127,7 +127,7 @@
                         <div class="row">                            
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <div class="card-body">
                                             <ul class="nav nav-pills">
                                                 <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">VIP</a></li>    
@@ -1168,7 +1168,7 @@
                                               </div>
                                             </div>
                                         </div>
-                                        <div class="col-6">
+                                        <div class="col-12">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <table class="table table-sm table-bordered table-striped">
