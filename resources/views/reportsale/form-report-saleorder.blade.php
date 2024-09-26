@@ -92,7 +92,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <canvas id="stackedBarChart"></canvas>
+                        <canvas id="myBarChart2"></canvas>
                     </div>
                 </div> 
                 <div class="row">
@@ -299,52 +299,60 @@
         }
     });
     document.addEventListener('DOMContentLoaded', function () {
-    var ctx = document.getElementById('stackedBarChart').getContext('2d');
+    var ctx = document.getElementById('myBarChart2').getContext('2d');
 
-    // ข้อมูลที่ดึงจาก Laravel
-    var data = {
-        labels: [ 
-            @foreach($hd6->unique('province_name') as $item)
-                '{{$item->province_name}}',
-            @endforeach
-        ],
-        datasets: [
-            @foreach($hd6->unique('pdgp_name') as $group)
-                {
-                    label: '{{$group->pdgp_name}}',
-                    data: [
-                        @foreach($hd6->where('pdgp_name', $group->pdgp_name) as $item)
-                            {{ $item->new_netamount }},
-                        @endforeach
-                    ],
-                    backgroundColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}', // สุ่มสี
-                },
-            @endforeach
-        ]
-    };
+    // ข้อมูลจาก Laravel ที่จะถูกส่งไปยังกราฟ
+    var labels = [
+        @foreach($hd6->unique('province_name') as $item)
+            '{{$item->province_name}}',
+        @endforeach
+    ];
 
-    // วาดกราฟ
+    var datasets = [
+        @foreach($hd6->unique('pdgp_name') as $group)
+            {
+                label: '{{$group->pdgp_name}}', // ชื่อกลุ่มสินค้า
+                data: [
+                    @foreach($hd6->where('pdgp_name', $group->pdgp_name) as $item)
+                        {{ $item->new_netamount }},
+                    @endforeach
+                ],
+                backgroundColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}', // สุ่มสี
+                borderColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}',
+                borderWidth: 1
+            },
+        @endforeach
+    ];
+
+    // สร้างกราฟ
     var myChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
+        type: 'bar',  // ประเภทของกราฟ
+        data: {
+            labels: labels,  // ใช้ชื่อจังหวัดเป็นแกน X
+            datasets: datasets  // ข้อมูลแต่ละกลุ่มสินค้า
+        },
         options: {
             responsive: true,
             plugins: {
                 legend: {
-                    position: 'top',
+                    position: 'top',  // แสดงตารางข้อมูล
                 },
+                title: {
+                    display: true,
+                    text: 'ยอดขายสินค้าแต่ละกลุ่มในแต่ละจังหวัด'
+                }
             },
             scales: {
                 x: {
-                    stacked: true,
+                    stacked: true  // ทำให้ Bar Chart เป็นแบบซ้อนกัน
                 },
                 y: {
-                    stacked: true,
+                    beginAtZero: true,
+                    stacked: true  // ทำให้ Bar Chart เป็นแบบซ้อนกัน
                 }
             }
         }
     });
 });
-
 </script>
 @endpush
