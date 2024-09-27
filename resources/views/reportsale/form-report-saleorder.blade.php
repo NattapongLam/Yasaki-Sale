@@ -160,13 +160,13 @@
                 {
                     label: 'ยอดสะสมปีก่อนหน้า',
                     data: cumulativeOldData,
-                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderColor: 'rgba(245, 39, 39, 1)',
                     fill: false
                 },
                 {
                     label: 'ยอดสะสมปีปัจจุบัน',
                     data: cumulativeNewData,
-                    borderColor: 'rgba(153, 102, 255, 1)',
+                    borderColor: 'rgba(39, 245, 39, 1)',
                     fill: false
                 }
             ]
@@ -206,15 +206,15 @@
                 {
                     label: 'ยอดปีก่อนหน้า',
                     data: oldData,
-                    backgroundColor: 'rgba(75, 192, 192, 0.2)', // สีของแถบกราฟ
-                    borderColor: 'rgba(75, 192, 192, 1)', // สีขอบแถบกราฟ
+                    backgroundColor: 'rgba(245, 39, 39, 1)', // สีของแถบกราฟ
+                    borderColor: 'rgba(245, 39, 39, 1)', // สีขอบแถบกราฟ
                     borderWidth: 1
                 },
                 {
                     label: 'ยอดปีปัจจุบัน',
                     data: newData,
-                    backgroundColor: 'rgba(153, 102, 255, 0.2)', // สีของแถบกราฟ
-                    borderColor: 'rgba(153, 102, 255, 1)', // สีขอบแถบกราฟ
+                    backgroundColor: 'rgba(39, 245, 39, 1)', // สีของแถบกราฟ
+                    borderColor: 'rgba(39, 245, 39, 1)', // สีขอบแถบกราฟ
                     borderWidth: 1
                 }
             ]
@@ -267,15 +267,15 @@
                 {
                     label: 'ยอดปีก่อนหน้า',
                     data: oldData, // ยอดปีก่อนหน้า
-                    backgroundColor: 'rgba(54, 162, 235, 0.6)', // สี bar สำหรับปีก่อนหน้า
-                    borderColor: 'rgba(54, 162, 235, 1)', // สีขอบ bar
+                    backgroundColor: 'rgba(245, 39, 39, 1)', // สี bar สำหรับปีก่อนหน้า
+                    borderColor: 'rgba(245, 39, 39, 1)', // สีขอบ bar
                     borderWidth: 1
                 },
                 {
                     label: 'ยอดปีปัจจุบัน',
                     data: newData, // ยอดปีปัจจุบัน
-                    backgroundColor: 'rgba(255, 99, 132, 0.6)', // สี bar สำหรับปีปัจจุบัน
-                    borderColor: 'rgba(255, 99, 132, 1)', // สีขอบ bar
+                    backgroundColor: 'rgba(39, 245, 39, 1)', // สี bar สำหรับปีปัจจุบัน
+                    borderColor: 'rgba(39, 245, 39, 1)', // สีขอบ bar
                     borderWidth: 1
                 }
             ]
@@ -317,8 +317,20 @@
                         {{ $item->new_netamount }},
                     @endforeach
                 ],
-                backgroundColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}', // สุ่มสี
-                borderColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}',
+                // กำหนดสีให้แต่ละกลุ่มสินค้า
+                @if ($group->pdgp_name == 'ดิสเบรค')
+                    backgroundColor: 'yellow',
+                    borderColor: 'yellow',
+                @elseif ($group->pdgp_name == 'ผ้าเบรค')
+                    backgroundColor: 'green',
+                    borderColor: 'green',
+                @elseif ($group->pdgp_name == 'กลุ่มดุมล้อ')
+                    backgroundColor: 'red',
+                    borderColor: 'red',
+                @else
+                    backgroundColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}', // ใช้สีสุ่มสำหรับกลุ่มอื่น ๆ
+                    borderColor: '{{ sprintf("#%06X", mt_rand(0, 0xFFFFFF)) }}',
+                @endif
                 borderWidth: 1
             },
         @endforeach

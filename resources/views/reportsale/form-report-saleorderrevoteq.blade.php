@@ -14,49 +14,24 @@
             </div>
             @endif
             <div class="card-body">
-                <h3 class="card-title" style="font-weight: bold">ยอดขายเดือนปัจจุบัน</h3><br><hr>
+                <h3 class="card-title" style="font-weight: bold">REVOTEQ</h3><br><hr>
                 <div class="row">
                     <div class="col-12">
-                        <h5 class="card-title" style="font-weight: bold">ยอดรวม</h5><br>
                         <canvas id="myBarChart" width="400" height="200"></canvas>
-
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
+                            <table id="example2" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>ยอดเดือนปีก่อนหน้า</th>
-                                        <th>ยอดเดือนปีปัจจุบัน</th>
-                                        <th>%</th>
-                                        <th>ยอดค้าง</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($hd3 as $item)
-                                        <tr>
-                                            <td>{{number_format($item->old_netamount,2)}}</td>
-                                            <td>{{number_format($item->new_netamount,2)}}</td>
-                                            <td>{{number_format($item->per_netamount,2)}}</td>
-                                            <td>{{number_format($item->backlogprice,2)}}</td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <h5 class="card-title" style="font-weight: bold">กลุ่มสินค้า</h5><br>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>กลุ่มสินค้า</th>
-                                        <th>ยอดเดือนปีก่อนหน้า</th>
-                                        <th>ยอดเดือนปีปัจจุบัน</th>
+                                        <th>จังหวัด</th>
+                                        <th>ยอดปีก่อนหน้า</th>
+                                        <th>ยอดปีปัจจุบัน</th>
                                         <th>%</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($hd1 as $item)
+                                    @foreach ($hd2 as $item)
                                         <tr>
-                                            <td>{{$item->pdgp_name}}</td>
+                                            <td>{{$item->province_name}}</td>
                                             <td>{{number_format($item->old_netamount,2)}}</td>
                                             <td>{{number_format($item->new_netamount,2)}}</td>
                                             <td>{{number_format($item->per_netamount,2)}}</td>
@@ -70,17 +45,17 @@
                 <div class="row">
                     <h5 class="card-title" style="font-weight: bold">ลูกค้า</h5><br>
                     <div class="table-responsive">
-                        <table id="tb_job" class="table table-bordered table-striped">
+                        <table id="example1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
                                     <th>ลูกค้า</th>
-                                    <th>ยอดเดือนปีก่อนหน้า</th>
-                                    <th>ยอดเดือนปีปัจจุบัน</th>
+                                    <th>ยอดปีก่อนหน้า</th>
+                                    <th>ยอดปีปัจจุบัน</th>
                                     <th>%</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($hd4 as $item)
+                                @foreach ($hd3 as $item)
                                     <tr>
                                         <td>{{$item->customer_name}}</td>
                                         <td>{{number_format($item->old_netamount,2)}}</td>
@@ -114,7 +89,7 @@ $(document).ready(function() {
             ],
             //order by
             "order": [
-                [2, "desc"]
+                [4, "desc"]
             ],
         })
     });
@@ -123,19 +98,19 @@ $(document).ready(function() {
 
         // ข้อมูลจาก Laravel ที่จะถูกส่งไปยังกราฟ
         var labels = [
-            @foreach($hd2 as $item)
+            @foreach($hd1 as $item)
                 '{{$item->month}}',
             @endforeach
         ];
 
         var oldYearData = [
-            @foreach($hd2 as $item)
+            @foreach($hd1 as $item)
                 {{ $item->old_netamount }},
             @endforeach
         ];
 
         var newYearData = [
-            @foreach($hd2 as $item)
+            @foreach($hd1 as $item)
                 {{ $item->new_netamount }},
             @endforeach
         ];

@@ -187,12 +187,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                <a href="https://demo.revoteq-yasaki.com/isosals" class="nav-link">
+                <a href="{{ url('/report-saleorderrevoteq') }}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-danger"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
                     <h5>
-                     เอกสาร ISO
+                     REVOTEQ
                     </h5>                 
                   </div>
                   <!-- /.info-box-content -->
@@ -216,6 +216,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                   @csrf
                 </form>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-12">
+                <a href="https://demo.revoteq-yasaki.com/isosals" class="nav-link">
+                <div class="info-box">
+                  <span class="info-box-icon bg-warning"><i class="far fa-copy"></i></span>
+                  <div class="info-box-content">
+                    <h5>
+                     เอกสาร ISO
+                    </h5>                 
+                  </div>
+                  <!-- /.info-box-content -->
+                </div>
+                <!-- /.info-box -->
+                </a>
               </div>
             </div>
           </div>

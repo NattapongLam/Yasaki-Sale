@@ -1449,7 +1449,7 @@ addTolist = (id) => {
             }
             else{
             $numbertd = $('#tb_productlist tr').length + 1;
-            $('#tb_productlist').append(`
+            $('#tb_productlist').prepend(`
             <tr style="background-color:#F8F8FF" class="${data.pd.id}">                 
                 <td class="text-center">
                     <input type="hidden"  name="pd_id[]" value="${data.pd.id}">
@@ -1457,14 +1457,13 @@ addTolist = (id) => {
                     ${$numbertd}
                 </td>   
                 <td class="text-center">${data.pd.pd_code}/${data.pd.pd_name}</td>
-                <td class="text-center"><input type="number" class="form-control" name="pd_qty[]" value="0" id="pd_qty[]"></td>                  
+                <td class="text-center"><input type="number" class="form-control" name="pd_qty[]" value="" id="pd_qty[]"></td>                  
                 <td class="text-center">
                     <button type="button" class="btn btn-danger btn-sm" onclick="removeTolist('${data.pd.id}')"><i class="fas fa-trash"></i></button>
                 </td>
             </tr>
             `)  
-            }
-                                                                   
+            }                                                                  
         }
     }) 
 }
