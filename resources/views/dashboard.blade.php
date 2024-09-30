@@ -71,12 +71,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
                 </a>
               </div>
               <div class="col-md-3 col-sm-6 col-12">
-                <a href="{{route('stockcard.index')}}" class="nav-link">
+                <a href="{{ url('/report-customerorder') }}" class="nav-link">
                 <div class="info-box">
                   <span class="info-box-icon bg-info"><i class="far fa-copy"></i></span>
                   <div class="info-box-content">
                     <h5>
-                      สต็อคสินค้า
+                      ประวัติการซื้อ
                     </h5>                 
                   </div>
                   <!-- /.info-box-content -->

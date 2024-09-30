@@ -21,13 +21,17 @@ class RequestOrderSale extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $end_date = $request->end_date ?? date("Y-m-d");
+        $end_date = date("Y-m-d", strtotime("+1 month", strtotime($end_date)));
+        $start_date = $request->start_date ? $request->start_date : date("Y-m-d", strtotime("-2 month", strtotime($end_date)));
         if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('requestorder_hd')
             ->leftjoin('requestorder_status','requestorder_hd.requestorder_status_id','=','requestorder_status.requestorder_status_id')
             ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
             ->where('requestorder_hd.requestorder_status_id','<>',2)
+            ->whereBetween('requestorder_hd.requestorder_hd_date', [$start_date, $end_date])
             ->get();
         }
         else {
@@ -36,9 +40,10 @@ class RequestOrderSale extends Controller
             ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
             ->where('requestorder_hd_sale',Auth::user()->username)
             ->where('requestorder_hd.requestorder_status_id','<>',2)
+            ->whereBetween('requestorder_hd.requestorder_hd_date', [$start_date, $end_date])
             ->get();
         }
-         return view('requestordersale.form-open-requestorder', compact('hd'));
+         return view('requestordersale.form-open-requestorder', compact('hd','end_date','start_date'));
     }
 
     /**

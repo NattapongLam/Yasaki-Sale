@@ -14,7 +14,24 @@
             </div>
             @endif
             <div class="card-body">
-                <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3><br><hr>
+                <div class="row">
+                    <div class="col-2">
+                        <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3>
+                    </div>
+                    <form method="GET" action="{{ route('requestorder.index') }}" class="row">
+                        <div class="col-5">
+                            <label>วันที่</label>
+                            <input type="date" class="form-control" name="start_date" value="{{ $start_date }}">
+                        </div>
+                        <div class="col-5">
+                            <label>ถึง</label>
+                            <input type="date" class="form-control" name="end_date" value="{{ $end_date }}">
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="btn btn-primary" style="margin-top: 32px;">ค้นหา</button>
+                        </div>
+                    </form>
+                </div><br>
                 <div style="overflow-x:auto;">
                     <table id="tb_job" class="table table-sm table-bordered table-striped">
                         <thead>
@@ -61,7 +78,7 @@
                                         @if($item->requestorder_status_id == 1)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                         <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                        @else
+                                        @elseif($item->requestorder_status_id == 3)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>แก้ไข</a>
                                         @endif       
                                     </td>

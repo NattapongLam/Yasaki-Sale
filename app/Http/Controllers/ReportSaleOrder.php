@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -236,5 +237,26 @@ class ReportSaleOrder extends Controller
             ->get();
         }
         return view('reportsale.form-report-saleorderrevoteq', compact('hd1','hd2','hd3'));
+    }
+    public function ReportCustomerOrder(Request $request)
+    {
+        $end_date = $request->end_date ?? date("Y-m-d");
+        $end_date = date("Y-m-d", strtotime("+1 month", strtotime($end_date)));
+        $start_date = $request->start_date ? $request->start_date : date("Y-m-d", strtotime("-2 month", strtotime($end_date)));
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+            $cust = Customer::get();
+            $hd = DB::table('api_saleorder_dos')
+            ->whereBetween('docdate', [$start_date, $end_date])
+            ->where('arcode',$request->customer_code)
+            ->get();
+        }
+        else {
+            $cust = Customer::where('sale_code',Auth::user()->username)->get();
+            $hd = DB::table('api_saleorder_dos')
+            ->whereBetween('docdate', [$start_date, $end_date])
+            ->where('arcode',$request->customer_code)
+            ->get();
+        }
+        return view('reportsale.form-report-customerorder', compact('cust','end_date','start_date','hd'));
     }
 }

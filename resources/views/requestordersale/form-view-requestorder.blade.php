@@ -36,6 +36,9 @@
     
             <!-- Table row -->
             <div class="row">
+              @php
+                $totalQty = $dt->sum('requestorder_dt_qty');
+              @endphp
               <div class="col-12 table-responsive">
                 <table class="table table-striped">
                   <thead>
@@ -54,6 +57,12 @@
                         </tr>
                     @endforeach         
                   </tbody>
+                  <tfoot>
+                    <tr>
+                        <th colspan="2" class="text-right">ยอดรวม</th>
+                        <th>{{number_format($totalQty, 2)}}</th>
+                    </tr>
+                </tfoot>
                 </table>
               </div>
               <!-- /.col -->

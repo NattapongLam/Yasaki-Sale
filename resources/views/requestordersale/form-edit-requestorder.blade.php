@@ -221,25 +221,28 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc1->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc1->pd_code}} {{$stc1->pd_name}} คงเหลือ:{{number_format($stc1->pd_stc,2)}}
+                                                                        <strong>{{$stc1->pd_code}}</strong> {{$stc1->pd_name}} 
                                                                     </p>
-                                                                        @if ($stc1->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc1->pd_pic2)
+                                                                    @if ($stc1->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc1->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    @if($stc1->pd_pic2)
                                                                         <a href="{{asset('/images/products/'.$stc1->pd_pic2)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
-                                                                        @endif
-                                                                        @if ($stc1->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc1->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
-                                                                </div>                                                                
-                                                            </div>
+                                                                    @endif   
+                                                                    @if ($stc1->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc1->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif 
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc1->pd_stc, 2)}}</strong>
+                                                                    </span>                                                           
+                                                                </div>                                                                                                                            
+                                                            </div>                                                            
                                                         @endforeach
                                                     </div>
                                                 </div>
@@ -255,10 +258,9 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc1_1->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc1_1->pd_code}} {{$stc1_1->pd_name}} คงเหลือ:{{number_format($stc1_1->pd_stc,2)}}
+                                                                        <strong>{{$stc1_1->pd_code}}</strong> {{$stc1_1->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc1_1->pd_pic1)
+                                                                    @if ($stc1_1->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc1_1->pd_pic1)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
@@ -272,7 +274,10 @@
                                                                         <a href="{{asset('/images/products/'.$stc1_1->pd_pic3)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
-                                                                        @endif                              
+                                                                        @endif     
+                                                                        <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                            คงเหลือ: <strong>{{number_format($stc1_1->pd_stc, 2)}}</strong>
+                                                                        </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -290,24 +295,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc1_2->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc1_2->pd_code}} {{$stc1_2->pd_name}} คงเหลือ:{{number_format($stc1_2->pd_stc,2)}}
+                                                                        <strong>{{$stc1_2->pd_code}}</strong> {{$stc1_2->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc1_2->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc1_2->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc1_2->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc1_2->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc1_2->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc1_2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc1_2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc1_2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc1_2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc1_2->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -325,24 +332,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc2->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc2->pd_code}} {{$stc2->pd_name}} คงเหลือ:{{number_format($stc2->pd_stc,2)}}
+                                                                        <strong>{{$stc2->pd_code}}</strong> {{$stc2->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc2->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc2->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc2->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc2->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc2->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc2->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -360,23 +369,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc2_1->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc2_1->pd_code}} {{$stc2_1->pd_name}} คงเหลือ:{{number_format($stc2_1->pd_stc,2)}}
-                                                                    </p>                                                                    <!-- รูปสินค้า -->
-                                                                        @if ($stc2_1->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc2_1->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc2_1->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc2_1->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc2_1->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                        <strong>{{$stc2_1->pd_code}}</strong> {{$stc2_1->pd_name}}
+                                                                    </p>
+                                                                    @if ($stc2_1->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2_1->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2_1->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2_1->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif 
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc2_1->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -394,24 +406,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc2_2->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc2_2->pd_code}} {{$stc2_2->pd_name}} คงเหลือ:{{number_format($stc2_2->pd_stc,2)}}
+                                                                        <strong>{{$stc2_2->pd_code}}</strong> {{$stc2_2->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc2_2->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc2_2->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc2_2->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc2_2->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc2_2->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc2_2->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc2_2->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc2_2->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc2_2->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif  
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc2_2->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -429,24 +443,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc3->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc3->pd_code}} {{$stc3->pd_name}} คงเหลือ:{{number_format($stc3->pd_stc,2)}}
-                                                                    </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc3->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc3->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc3->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc3->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                        <strong>{{$stc3->pd_code}}</strong> {{$stc3->pd_name}}
+                                                                    </p>    
+                                                                    @if ($stc3->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc3->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc3->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc3->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif                                                          
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc3->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -464,10 +480,9 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc4->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc4->pd_code}} {{$stc4->pd_name}} คงเหลือ:{{number_format($stc4->pd_stc,2)}}
+                                                                        <strong>{{$stc4->pd_code}}</strong> {{$stc4->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc4->pd_pic1)
+                                                                    @if ($stc4->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc4->pd_pic1)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
@@ -481,7 +496,10 @@
                                                                         <a href="{{asset('/images/products/'.$stc4->pd_pic3)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
-                                                                        @endif                              
+                                                                        @endif 
+                                                                        <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                            คงเหลือ: <strong>{{number_format($stc4->pd_stc, 2)}}</strong>
+                                                                        </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -499,9 +517,8 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc5->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc5->pd_code}} {{$stc5->pd_name}} คงเหลือ:{{number_format($stc5->pd_stc,2)}}
+                                                                        <strong>{{$stc5->pd_code}}</strong> {{$stc5->pd_name}} 
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
                                                                         @if ($stc5->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc5->pd_pic1)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
@@ -516,7 +533,10 @@
                                                                         <a href="{{asset('/images/products/'.$stc5->pd_pic3)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
-                                                                        @endif                              
+                                                                        @endif        
+                                                                        <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                            คงเหลือ: <strong>{{number_format($stc5->pd_stc, 2)}}</strong>
+                                                                        </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -534,24 +554,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc6->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc6->pd_code}} {{$stc6->pd_name}} คงเหลือ:{{number_format($stc6->pd_stc,2)}}
+                                                                        <strong>{{$stc6->pd_code}}</strong> {{$stc6->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc6->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc6->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc6->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc6->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc6->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc6->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc6->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc6->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc6->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif    
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc6->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -569,24 +591,26 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc7->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc7->pd_code}} {{$stc7->pd_name}} คงเหลือ:{{number_format($stc7->pd_stc,2)}}
+                                                                        <strong>{{$stc7->pd_code}}</strong> {{$stc7->pd_name}} 
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc7->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc7->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc7->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc7->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc7->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc7->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc7->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc7->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc7->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif     
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc7->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
@@ -604,60 +628,30 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc8->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc8->pd_code}} {{$stc8->pd_name}} คงเหลือ:{{number_format($stc8->pd_stc,2)}}
+                                                                        <strong>{{$stc8->pd_code}}</strong> {{$stc8->pd_name}}
                                                                     </p>
-                                                                        <!-- รูปสินค้า -->
-                                                                        @if ($stc8->pd_pic1)
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if($stc8->pd_pic2)
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif
-                                                                        @if ($stc8->pd_pic3)
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
-                                                                            <i class="fas fa-image" style="display: inline;"></i>
-                                                                        </a>
-                                                                        @endif                              
+                                                                    @if ($stc8->pd_pic1)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if($stc8->pd_pic2)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif
+                                                                    @if ($stc8->pd_pic3)
+                                                                    <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
+                                                                        <i class="fas fa-image" style="display: inline;"></i>
+                                                                    </a>
+                                                                    @endif   
+                                                                    <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                        คงเหลือ: <strong>{{number_format($stc8->pd_stc, 2)}}</strong>
+                                                                    </span>
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
                                                     </div> 
-                                                  {{-- <div class="table-responsive">
-                                                      <table id="tb_job8" class="table table-sm table-bordered table-striped">
-                                                        <thead>
-                                                        <tr>
-                                                            <th class="text-center">รูปสินค้า</th>
-                                                            <th class="text-center">สินค้า</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                            @foreach ($stc8 as $stc8)
-                                                                <tr>                                                                       
-                                                                    <td class="text-center">
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic1)}}" target="_blank">
-                                                                            <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic1)}}">
-                                                                        </a>   
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic2)}}" target="_blank">
-                                                                            <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic2)}}">
-                                                                        </a>  
-                                                                        <a href="{{asset('/images/products/'.$stc8->pd_pic3)}}" target="_blank">
-                                                                            <img width="20px" src="{{asset('/images/products/'.$stc8->pd_pic3)}}">
-                                                                        </a>                             
-                                                                      </td>
-                                                                      <td>
-                                                                        <p onclick="addTolist({{$stc8->id}})">
-                                                                            {{$stc8->pd_code}}/{{$stc8->pd_name}} (คงเหลือ:{{number_format($stc8->pd_stc,2)}})
-                                                                        </p>                                                            
-                                                                    </td>                       
-                                                                </tr>
-                                                            @endforeach
-                                                        </tbody>
-                                                      </table>
-                                                    </div>                        --}}
                                                 </div>
                                                 <div class="tab-pane" id="activity3">
                                                     <input type="text" id="searchBox2" placeholder="ค้นหาสินค้า..." onkeyup="filterList2()" class="form-control" style="margin-bottom: 5px;">
@@ -671,7 +665,7 @@
                                                                 <div class="listbox-info">
                                                                     <!-- รายละเอียดสินค้า -->
                                                                     <p onclick="selectAndAddTolist({{$stc1_3->id}})" style="display: inline; margin-right: 10px;">
-                                                                        {{$stc1_3->pd_code}} {{$stc1_3->pd_name}} คงเหลือ:{{number_format($stc1_3->pd_stc,2)}}
+                                                                        <strong>{{$stc1_3->pd_code}}</strong> {{$stc1_3->pd_name}} 
                                                                     </p>
                                                                     @if ($stc1_3->pd_pic1)
                                                                         <a href="{{asset('/images/products/'.$stc1_3->pd_pic1)}}" target="_blank">
@@ -687,7 +681,10 @@
                                                                         <a href="{{asset('/images/products/'.$stc1_3->pd_pic3)}}" target="_blank">
                                                                             <i class="fas fa-image" style="display: inline;"></i>
                                                                         </a>
-                                                                        @endif     
+                                                                        @endif    
+                                                                        <span class="product-remaining" style="display: inline-block; margin-left: 10px;">
+                                                                            คงเหลือ: <strong>{{number_format($stc1_3->pd_stc, 2)}}</strong>
+                                                                        </span> 
                                                                 </div>                                                         
                                                             </div>
                                                         @endforeach
