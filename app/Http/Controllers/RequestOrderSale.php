@@ -177,6 +177,7 @@ class RequestOrderSale extends Controller
         ->get();
         $docs_last = DB::table('requestorder_hd')
             ->where('requestorder_hd_docuno', 'like', '%' . date('ym') . '%')
+            ->where('requestorder_hd_number','<>',0)
             ->orderBy('requestorder_hd_id', 'desc')->first();
         if ($docs_last) {
             $docs = 'PR' . date('ym')  . str_pad($docs_last->requestorder_hd_number + 1, 4, '0', STR_PAD_LEFT);
@@ -199,6 +200,7 @@ class RequestOrderSale extends Controller
         $d = date("ym",strtotime($request->requestorder_hd_date));
         $docs_last = DB::table('requestorder_hd')
             ->where('requestorder_hd_docuno', 'like', '%' .$d . '%')
+            ->where('requestorder_hd_number','<>',0)
             ->orderBy('requestorder_hd_id', 'desc')->first();
         if ($docs_last) {
             $docs = 'PR' .$d  . str_pad($docs_last->requestorder_hd_number + 1, 4, '0', STR_PAD_LEFT);
