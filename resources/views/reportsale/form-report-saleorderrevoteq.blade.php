@@ -66,6 +66,31 @@
                             </tbody>
                         </table>
                     </div>
+                </div>       
+                <div class="row">
+                    <h5 class="card-title" style="font-weight: bold">สินค้า</h5><br>
+                    <div class="table-responsive">
+                        <table id="tb_job" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>สินค้า</th>
+                                    <th>จำนวนปีก่อนหน้า</th>
+                                    <th>จำนวนปีปัจจุบัน</th>
+                                    <th>%</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($hd4 as $item)
+                                    <tr>
+                                        <td>{{$item->itemcode}}/{{$item->pd_name}}</td>
+                                        <td>{{number_format($item->old_qty,2)}}</td>
+                                        <td>{{number_format($item->new_qty,2)}}</td>
+                                        <td>{{number_format($item->per_qty,2)}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>             
             </div>
         </div>
@@ -77,22 +102,18 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
 $(document).ready(function() {
-        $('#tb_job').DataTable({
-            "pageLength": 20,
-            "lengthMenu": [
-                [10, 25, 50, -1],
-                [10, 25, 50, "All"]
-            ],
-            dom: 'Bfrtip',
-            buttons: [
-                'copy', 'csv', 'excel', 'pdf', 'print'
-            ],
-            //order by
-            "order": [
-                [4, "desc"]
-            ],
-        })
-    });
+    $('#tb_job').DataTable({
+        "pageLength": 50,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 2, "desc" ]],        
+    })
+});  ;
     document.addEventListener('DOMContentLoaded', function () {
         var ctx = document.getElementById('myBarChart').getContext('2d');
 

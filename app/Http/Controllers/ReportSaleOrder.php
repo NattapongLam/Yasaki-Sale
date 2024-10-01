@@ -6,6 +6,7 @@ use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReportSaleOrder extends Controller
 {
@@ -124,13 +125,22 @@ class ReportSaleOrder extends Controller
         if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('vw_saleorder_bill')
             ->get();
+            $hd1 = DB::table('vw_saleorder_bill')
+            ->where('docdate', '>=', Carbon::now()->subDays(7)) // หาข้อมูลย้อนหลัง 7 วัน
+            ->get();
         }
         else {
             $hd = DB::table('vw_saleorder_bill')
             ->where('salecode',Auth::user()->username)
             ->get();
+            $hd1 = DB::table('vw_saleorder_bill')
+            ->where('docdate', '>=', Carbon::now()->subDays(7)) // หาข้อมูลย้อนหลัง 7 วัน
+            ->where('salecode',Auth::user()->username)
+            ->get();
         }
-        return view('reportsale.form-report-billorder', compact('hd'));
+        $groupedByDay = $hd1->groupBy('docdate')->toArray();
+        ksort($groupedByDay);
+        return view('reportsale.form-report-billorder', compact('hd','hd1','groupedByDay'));
     }
     public function ReportGroupLowList(Request $request)
     {
@@ -224,6 +234,8 @@ class ReportSaleOrder extends Controller
             ->get();
             $hd3 = DB::table('vw_saleordercustomer_revoteqall')
             ->get();
+            $hd4 = DB::table('vw_saleorderproduct_revoteqall')
+            ->get();
         }
         else {
             $hd1 = DB::table('vw_saleorderallmonthlist_revoteqsale')
@@ -235,8 +247,11 @@ class ReportSaleOrder extends Controller
             $hd3 = DB::table('vw_saleordercustomer_revoteqsale')
             ->where('salecode',Auth::user()->username)
             ->get();
+            $hd4 = DB::table('vw_saleorderproduct_revoteqsale')
+            ->where('salecode',Auth::user()->username)
+            ->get();
         }
-        return view('reportsale.form-report-saleorderrevoteq', compact('hd1','hd2','hd3'));
+        return view('reportsale.form-report-saleorderrevoteq', compact('hd1','hd2','hd3','hd4'));
     }
     public function ReportCustomerOrder(Request $request)
     {

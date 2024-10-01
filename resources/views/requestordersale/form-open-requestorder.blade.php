@@ -13,10 +13,7 @@
                 <button type="button" class="btn btn-outline-danger btn-sm btn-block">{{ session('error') }}</button>
             </div>
             @endif
-            <div class="card-body">
-                    <div class="row">
-                        <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3>
-                    </div>
+            <div class="card-body">                   
                     <form method="GET" action="{{ route('requestorder.index') }}" class="row">
                         <div class="col-5">
                             <label>วันที่</label>
@@ -30,6 +27,9 @@
                             <button type="submit" class="btn btn-primary" style="margin-top: 32px;">ค้นหา</button>
                         </div>
                     </form><br>
+                    <div class="row">
+                        <h3 class="card-title" style="font-weight: bold">รายการใบสั่งจอง</h3>
+                    </div>
                 <div style="overflow-x:auto;">
                     <table id="tb_job" class="table table-sm table-bordered table-striped">
                         <thead>
