@@ -28,7 +28,7 @@
                         <tbody>
                             @foreach ($hd as $item)
                                 <tr>
-                                    <td>{{\Carbon\Carbon::parse($item->trahd_date)->format('d/m/Y')}}</td>
+                                    <td>{{$item->trahd_date}}</td>
                                     <td>{{$item->arname}}</td>
                                     <td>{{$item->itemcode}}/{{$item->itemname}}</td>
                                     <td>{{number_format($item->qty,2)}}</td>

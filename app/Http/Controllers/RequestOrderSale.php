@@ -561,6 +561,11 @@ class RequestOrderSale extends Controller
             ->get();
             $sum = DB::table('vw_requestorder_pricetotal')
             ->sum('total');
+            $hd1 = DB::table('vw_requestorder_pricetotalmonth')
+            ->get();          
+            $sum1 = DB::table('vw_requestorder_pricetotalmonth')
+            ->sum('total');
+            
         }
         else {
             $hd = DB::table('vw_requestorder_pricetotal')
@@ -570,8 +575,14 @@ class RequestOrderSale extends Controller
             $sum = DB::table('vw_requestorder_pricetotal')
             ->where('requestorder_hd_sale',Auth::user()->username)
             ->sum('total');
+            $hd1 = DB::table('vw_requestorder_pricetotalmonth')
+            ->where('requestorder_hd_sale',Auth::user()->username)
+            ->get();
+            $sum1 = DB::table('vw_requestorder_pricetotalmonth')
+            ->where('requestorder_hd_sale',Auth::user()->username)
+            ->sum('total');
         }
-        return view('reportsale.form-report-requestorder', compact('hd','sum'));
+        return view('reportsale.form-report-requestorder', compact('hd','sum','hd1','sum1'));
     }
 
     public function getOrderBacklog(Request $request)

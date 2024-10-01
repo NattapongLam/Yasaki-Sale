@@ -246,17 +246,25 @@ class ReportSaleOrder extends Controller
         if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $cust = Customer::get();
             $hd = DB::table('api_saleorder_dos')
-            ->whereBetween('docdate', [$start_date, $end_date])
+            ->whereBetween('docdate', [$request->start_date, $request->end_date])
             ->where('arcode',$request->customer_code)
             ->get();
+            $hd1 = DB::table('vw_saleorder_pricetotal')
+            ->get();
+            $groupedByMonth = $hd1->groupBy('month')->toArray();
         }
         else {
             $cust = Customer::where('sale_code',Auth::user()->username)->get();
             $hd = DB::table('api_saleorder_dos')
-            ->whereBetween('docdate', [$start_date, $end_date])
+            ->whereBetween('docdate', [$request->start_date, $request->end_date])
             ->where('arcode',$request->customer_code)
             ->get();
+            $hd1 = DB::table('vw_saleorder_pricetotal')
+            ->where('salecode',Auth::user()->username)        
+            ->get();
+            $groupedByMonth = $hd1->groupBy('month')->toArray();
         }
-        return view('reportsale.form-report-customerorder', compact('cust','end_date','start_date','hd'));
+        ksort($groupedByMonth);
+        return view('reportsale.form-report-customerorder', compact('cust','end_date','start_date','hd','hd1','groupedByMonth'));
     }
 }

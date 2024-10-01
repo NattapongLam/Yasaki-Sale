@@ -13,8 +13,7 @@
                 <button type="button" class="btn btn-outline-danger btn-sm btn-block">{{ session('error') }}</button>
             </div>
             @endif
-            <div class="card-body">
-                    <h3 class="card-title" style="font-weight: bold">ประวัติการซื้อ</h3>
+            <div class="card-body">                            
                     <form method="GET" action="{{ url('/report-customerorder') }}" class="row align-items-end">                      
                         <div class="col-md-2">
                             <label>วันที่</label>
@@ -57,7 +56,7 @@
                         <tbody>
                             @foreach ($hd as $item)
                                 <tr>
-                                    <td>{{$item->docdate}}</td>
+                                    <td>{{\Carbon\Carbon::parse($item->docdate)->format('d/m/Y')}}</td>
                                     <td>{{$item->docno}}</td>
                                     <td>{{$item->itemcode}} {{$item->itemname}}</td>
                                     <td>{{ number_format($item->qty,2)}} </td>
@@ -75,6 +74,61 @@
                         </tfoot>
                     </table>
                     @endif                  
+                </div>
+                <div class="row">
+                    <h3 class="card-title" style="font-weight: bold">ประวัติการซื้อ</h3>
+                </div> 
+                <div style="overflow-x:auto;">   
+<table id="tb_job1" class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>ลูกค้า</th>
+            @foreach ($groupedByMonth as $month => $items)
+                <th>เดือน {{$month}}</th> <!-- แสดงผลเดือนใน thead โดยเรียงลำดับจากซ้ายไปขวา -->
+            @endforeach
+            <th>รวม</th> <!-- เพิ่มคอลัมน์สำหรับยอดรวม -->
+        </tr>
+    </thead>
+    <tbody>
+        @php
+            // ตัวแปรเพื่อเก็บยอดรวมทั้งเดือน
+            $columnTotals = [];
+        @endphp
+        @foreach ($hd1->groupBy('customer_name') as $customerName => $itemsByCustomer)
+            <tr>                             
+                <td>{{ $customerName }}</td>
+                @php
+                    $rowTotal = 0; // ตัวแปรเพื่อเก็บยอดรวมของลูกค้า
+                @endphp
+                @foreach ($groupedByMonth as $month => $items) 
+                    @php
+                        // ค้นหา netamount ของลูกค้าในแต่ละเดือน
+                        $purchase = $itemsByCustomer->firstWhere('month', $month);
+                        $amount = $purchase ? $purchase->netamount : 0;
+                        $rowTotal += $amount; // เพิ่มยอดรวมรายลูกค้า
+                        
+                        // เพิ่มยอดรวมใน columnTotals
+                        if (!isset($columnTotals[$month])) {
+                            $columnTotals[$month] = 0; // กำหนดค่าเริ่มต้นถ้ายังไม่มี
+                        }
+                        $columnTotals[$month] += $amount; // เพิ่มยอดรวมของเดือน
+                    @endphp
+                    <td>{{ number_format($amount, 2) }}</td>
+                @endforeach
+                <td>{{ number_format($rowTotal, 2) }}</td> <!-- แสดงยอดรวมของลูกค้า -->
+            </tr>
+        @endforeach
+    </tbody>
+    <tfoot>
+        <tr>
+            <th>รวม</th> <!-- แสดงยอดรวมใน footer -->
+            @foreach ($groupedByMonth as $month => $items)
+                <td>{{ number_format($columnTotals[$month] ?? 0, 2) }}</td> <!-- แสดงยอดรวมของเดือน -->
+            @endforeach
+            <th>{{ number_format(array_sum($columnTotals), 2) }}</th> <!-- แสดงยอดรวมทั้งหมด -->
+        </tr>
+    </tfoot>
+</table>
                 </div>
             </div>
         </div>
@@ -98,7 +152,7 @@ $(document).ready(function() {
     });
 });
 $(document).ready(function() {
-        $('#tb_job').DataTable({
+    $('#tb_job').DataTable({
             "pageLength": 50,
             "lengthMenu": [
                 [10, 25, 50, -1],
@@ -110,9 +164,22 @@ $(document).ready(function() {
             ],
             //order by
             "order": [
-                [0, "desc"]
+                [1, "desc"]
             ],
-        })
-    });   
+        })    
+}); 
+$(document).ready(function() {
+    $('#tb_job1').DataTable({
+        "pageLength": 50,
+        "lengthMenu": [
+            [10, 25, 50, -1],
+            [10, 25, 50, "All"]
+        ],
+        dom: 'Bfrtip',
+        buttons: [
+    ],
+    "order": [[ 0, "asc" ]],        
+    })
+});  
 </script>
 @endpush
