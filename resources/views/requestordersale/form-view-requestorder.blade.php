@@ -17,9 +17,9 @@
             <!-- info row -->
             <div class="row invoice-info">
               <div class="col-sm-6 invoice-col">
-                ลูกค้า:
+                <strong>{{$hd->customer_name}}</strong>            
                 <address>
-                  <strong>{{$hd->customer_name}}</strong>            
+                  <strong>{{$hd->customer_address}} {{$hd->subdistrict_name}} {{$hd->district_name}} จังหวัด {{$hd->province_name}} {{$hd->customer_zipcode}}</strong>            
                 </address>
               </div>
               <!-- /.col -->

@@ -291,6 +291,7 @@ class RequestOrderSale extends Controller
     {
         $hd = DB::table('requestorder_hd')
         ->leftjoin('sale_employee','requestorder_hd.requestorder_hd_sale','=','sale_employee.sa_code')
+        ->leftjoin('customers','requestorder_hd.customer_code','=','customers.customer_code')
         ->where('requestorder_hd.requestorder_hd_id',$id)
         ->first();
         $dt = DB::table('requestorder_dt')
