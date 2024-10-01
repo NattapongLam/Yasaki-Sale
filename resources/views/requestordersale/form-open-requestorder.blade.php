@@ -76,7 +76,7 @@
                                         @if($item->requestorder_status_id == 1)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
                                         <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
-                                        @elseif($item->requestorder_status_id == 3)
+                                        @elseif($item->requestorder_status_id == 3 || $item->requestorder_status_id == 5)
                                         <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>แก้ไข</a>
                                         @endif       
                                     </td>
