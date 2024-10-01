@@ -157,7 +157,7 @@ $(document).ready(function() {
             ],
             //order by
             "order": [
-                [0, "desc"]
+                [2, "desc"]
             ],
         })
     });   
