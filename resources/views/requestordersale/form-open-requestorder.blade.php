@@ -34,25 +34,28 @@
                     <table id="tb_job" class="table table-sm table-bordered table-striped">
                         <thead>
                             <tr>
-                                <th class="text-center">วันที่</th>
-                                <th class="text-center">สถานะ</th>                               
+                                <th class="text-center">วันที่</th>                                                         
                                 <th class="text-center">เลขที่</th>                               
                                 <th class="text-center">ลูกค้า</th>
+                                <th class="text-center">สถานะ</th>     
+                                <th class="text-center"></th>
+                                <th class="text-center"></th>
                                 <th class="text-center">พนักงาน</th>
-                                <th class="text-center">วันที่ต้องการส่ง</th>
+                                {{-- <th class="text-center">วันที่ต้องการส่ง</th> --}}
                                 <th class="text-center">ใบจองสินค้า</th>
                                 <th class="text-center">บิลขาย</th>
-                                <th class="text-center"></th>
-                                <th class="text-center"></th>
+                                
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($hd as $item)
                                 <tr>
-                                    <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_date)->format('d/m/Y')}}</td>
+                                    <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_date)->format('d/m/Y')}}</td>                                                                
+                                    <td class="text-center">{{$item->requestorder_hd_docuno}}</td>                                   
+                                    <td class="text-center">{{$item->customer_name}}</td>
                                     <td class="text-center">
                                         @if($item->requestorder_status_id == 1)
-                                        <span class="badge bg-warning">{{$item->requestorder_status_name}}</span>
+                                        <span class="badge bg-danger">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 2 )
                                         <span class="badge bg-danger">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 3 )
@@ -60,26 +63,24 @@
                                         @elseif($item->requestorder_status_id == 4 )
                                         <span class="badge bg-success">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 5 )
-                                        <span class="badge bg-primary">{{$item->requestorder_status_name}}</span>
+                                        <span class="badge bg-info">{{$item->requestorder_status_name}}</span>
                                         @endif
-                                    </td>                                
-                                    <td class="text-center">{{$item->requestorder_hd_docuno}}</td>                                   
-                                    <td class="text-center">{{$item->customer_name}}</td>
-                                    <td class="text-center">{{$item->sa_name}}</td>
-                                    <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_duedate)->format('d/m/Y')}}</td>
-                                    <td class="text-center">{{$item->salerequest_docuno}}</td>
-                                    <td class="text-center">{{$item->saleorder_docuno}}</td>
+                                    </td> 
                                     <td class="text-center">
-                                        <a href="{{ route('requestorder.show',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i>เอกสาร</a>
+                                        <a href="{{ route('requestorder.show',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm">เอกสาร</a>
                                     </td>
                                     <td class="text-center">
                                         @if($item->requestorder_status_id == 1)
-                                        <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                                        <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a>
+                                        <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm">แก้ไข</a>
+                                        <a href="javascript:void(0)" onclick="onDelete('{{$item->requestorder_hd_id}}')" class="btn btn-danger btn-sm">ลบ</a>
                                         @elseif($item->requestorder_status_id == 3 || $item->requestorder_status_id == 5)
-                                        <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm"><i class="fas fa-edit"></i>แก้ไข</a>
+                                        <a href="{{ route('requestorder.edit',$item->requestorder_hd_id) }}" class="btn btn-warning btn-sm">แก้ไข</a>
                                         @endif       
                                     </td>
+                                    <td class="text-center">{{$item->sa_name}}</td>
+                                    {{-- <td class="text-center">{{\Carbon\Carbon::parse($item->requestorder_hd_duedate)->format('d/m/Y')}}</td> --}}
+                                    <td class="text-center">{{$item->salerequest_docuno}}</td>
+                                    <td class="text-center">{{$item->saleorder_docuno}}</td>                                   
                                 </tr>
                             @endforeach
                         </tbody>
