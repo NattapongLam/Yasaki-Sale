@@ -59,11 +59,11 @@
                                         @elseif($item->requestorder_status_id == 2 )
                                         <span class="badge bg-danger">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 3 )
-                                        <span class="badge bg-info">{{$item->requestorder_status_name}}</span>
+                                        <span class="badge bg-warning">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 4 )
                                         <span class="badge bg-success">{{$item->requestorder_status_name}}</span>
                                         @elseif($item->requestorder_status_id == 5 )
-                                        <span class="badge bg-info">{{$item->requestorder_status_name}}</span>
+                                        <span class="badge bg-warning">{{$item->requestorder_status_name}}</span>
                                         @endif
                                     </td> 
                                     <td class="text-center">
@@ -156,7 +156,7 @@ $(document).ready(function() {
             ],
             //order by
             "order": [
-                [2, "desc"]
+                [1, "desc"]
             ],
         })
     });   
