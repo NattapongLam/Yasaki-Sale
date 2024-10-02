@@ -129,7 +129,7 @@
                                 @endif                                
                             </div>
                             <div class="row">
-                                <label>รายการที่สั่งแล้ว</label>
+                                <label style="color: red">รายการที่สั่งแล้ว</label>
                                 <table class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
@@ -147,7 +147,7 @@
                                                 <td class="text-center">{{$dt->requestorder_dt_qty}} {{$dt->pd_unit}}</td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn-sm btn-danger" onclick="cancelSku('{{ $dt->requestorder_dt_id }}')">
-                                                        <i class="fa fa-trash"></i>
+                                                        ลบ
                                                     </button>
                                                 </td>
                                             </tr>
@@ -156,7 +156,10 @@
                                 </table>
                             </div>
                             </div>
-                            <div class="col-12">                            
+                            <div class="col-12">  
+                                <center>
+                                    <h5 style="color: red"> ** ^^ในกรณีมีการเปลี่ยนรุ่นหรือเพิ่มรายการสินค้าเข้าไปแทนยอดที่เปิดมาแล้วรบกวนตรวจสอบรายการที่สั่งแล้วด้วยครับ^^ **</h5>   
+                                </center>                                                      
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
