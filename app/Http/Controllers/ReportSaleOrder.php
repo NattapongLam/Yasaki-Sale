@@ -139,7 +139,7 @@ class ReportSaleOrder extends Controller
             ->get();
         }
         $groupedByDay = $hd1->groupBy('docdate')->toArray();
-        ksort($groupedByDay);
+        krsort($groupedByDay);
         return view('reportsale.form-report-billorder', compact('hd','hd1','groupedByDay'));
     }
     public function ReportGroupLowList(Request $request)

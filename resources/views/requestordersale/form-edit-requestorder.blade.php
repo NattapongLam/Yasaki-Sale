@@ -57,8 +57,8 @@
                             <form id="frm_sub" method="POST" class="form-horizontal" action="{{ route('requestorder.update',$hd->requestorder_hd_id) }}" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
-                            <div class="card-body" style="background: #F8FCFC;">
-                            <div class="row">
+                            <div class="card-body" style="background: #F8FCFC;">                                                  
+                            <div class="row">                          
                             <div class="col-12 col-md-3">
                                 <div class="form-group">
                                     <label for="requestorder_hd_date">วันที่</label>
@@ -106,6 +106,7 @@
                                         <textarea class="form-control" id="requestorder_hd_reamrk" name="requestorder_hd_reamrk">{{$hd->requestorder_hd_reamrk}}</textarea>
                                     </div>
                                 </div>
+                               
                             </div>
                             <div class="row">
                                 @if ($bill)
@@ -118,9 +119,9 @@
                                 <table class="table">
                                     <tbody>
                                         @foreach ($product as $item)
-                                        <tr>
+                                        <tr style="color: blue">
                                             <td>{{$item->ITEMCODE}}/{{$item->ITEMNAME}}</td>
-                                            <td>{{number_format($item->REMAINQTY,2)}}</td>
+                                            <td>{{number_format($item->REMAINQTY,0)}}</td>
                                         </tr>
                                         @endforeach
                                        
@@ -142,9 +143,13 @@
                                     <tbody>
                                         @foreach ($dt as $key => $dt)
                                             <tr>
-                                                <td class="text-center">{{$key+1}}</td>
+                                                <td class="text-center">
+                                                    {{$key+1}} 
+                                                </td>
                                                 <td>{{$dt->pd_code}}/{{$dt->pd_name}}</td>
-                                                <td class="text-center">{{$dt->requestorder_dt_qty}} {{$dt->pd_unit}}</td>
+                                                <td class="text-center">
+                                                    {{number_format($dt->requestorder_dt_qty,0)}} {{$dt->pd_unit}}                                                  
+                                                </td>
                                                 <td class="text-center">
                                                     <button type="button" class="btn-sm btn-danger" onclick="cancelSku('{{ $dt->requestorder_dt_id }}')">
                                                         ลบ
@@ -159,7 +164,7 @@
                             <div class="col-12">  
                                 <center>
                                     <h5 style="color: red"> ** ^^ในกรณีมีการเปลี่ยนรุ่นหรือเพิ่มรายการสินค้าเข้าไปแทนยอดที่เปิดมาแล้วรบกวนตรวจสอบรายการที่สั่งแล้วด้วยครับ^^ **</h5>   
-                                </center>                                                      
+                                </center>                                                                                        
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12">
@@ -182,8 +187,7 @@
                                                                 <th><p>ผลรวม: <span id="sum_total">0</span></p></th>
                                                             </tr>
                                                         </tfoot>                                  
-                                                    </table>
-                                                    
+                                                    </table>                                                  
                                                 </div>
                                                 <div class="row">
                                                     <div class="form-group">
@@ -717,162 +721,6 @@ $('.select2').select2()
 $('.select2bs4').select2({
     theme: 'bootstrap4'
 })
-});
-$(document).ready(function() {
-    $('#tb_job1').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});   
-$(document).ready(function() {
-    $('#tb_job1_1').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});
-$(document).ready(function() {
-    $('#tb_job1_2').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});
-$(document).ready(function() {
-    $('#tb_job2').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});  
-$(document).ready(function() {
-    $('#tb_job2_1').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-}); 
-$(document).ready(function() {
-    $('#tb_job2_2').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});
-$(document).ready(function() {
-    $('#tb_job3').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-}); 
-$(document).ready(function() {
-    $('#tb_job4').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-}); 
-$(document).ready(function() {
-    $('#tb_job5').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-}); 
-$(document).ready(function() {
-    $('#tb_job6').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});
-$(document).ready(function() {
-    $('#tb_job7').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
-});
-$(document).ready(function() {
-    $('#tb_job8').DataTable({
-        "pageLength": 50,
-        "lengthMenu": [
-            [10, 25, 50, -1],
-            [10, 25, 50, "All"]
-        ],
-        dom: 'Bfrtip',
-        buttons: [
-    ],
-    "order": [[ 0, "asc" ]],        
-    })
 });
 addTolist = (id) => {
     console.log(id)

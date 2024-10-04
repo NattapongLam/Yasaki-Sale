@@ -68,7 +68,6 @@
                     </div>
                 </div>       
                 <div class="row">
-                    <h5 class="card-title" style="font-weight: bold">สินค้า</h5><br>
                     <div class="table-responsive">
                         <table id="tb_job" class="table table-bordered table-striped">
                             <thead>
@@ -103,7 +102,7 @@
 <script>
 $(document).ready(function() {
     $('#tb_job').DataTable({
-        "pageLength": 50,
+        "pageLength": 10,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]

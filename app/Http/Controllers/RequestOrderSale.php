@@ -490,7 +490,7 @@ class RequestOrderSale extends Controller
                         'requestorder_dt_listno' => $key+1
                     ]);
                 }
-            }           
+            }         
             DB::commit();
             return redirect()->route('requestorder.index')->with('success', 'บันทึกเรียบร้อย');
         } catch (\Exception $e) {
@@ -556,15 +556,15 @@ class RequestOrderSale extends Controller
 
     public function RequestorderList(Request $request)
     {
-        if(Auth::user()->id == 1){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
             $hd = DB::table('vw_requestorder_pricetotal')
             ->leftjoin('customers','vw_requestorder_pricetotal.arcode','=','customers.customer_code')
             ->get();
             $sum = DB::table('vw_requestorder_pricetotal')
             ->sum('total');
-            $hd1 = DB::table('vw_requestorder_pricetotalmonth')
+            $hd1 = DB::table('vw_requestorder_pricetotalmonthall')
             ->get();          
-            $sum1 = DB::table('vw_requestorder_pricetotalmonth')
+            $sum1 = DB::table('vw_requestorder_pricetotalmonthall')
             ->sum('total');
             
         }

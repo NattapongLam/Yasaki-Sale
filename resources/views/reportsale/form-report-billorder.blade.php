@@ -121,7 +121,7 @@ $(document).ready(function() {
     });
     $(document).ready(function() {
     $('#tb_job1').DataTable({
-        "pageLength": 50,
+        "pageLength": 20,
         "lengthMenu": [
             [10, 25, 50, -1],
             [10, 25, 50, "All"]
@@ -129,7 +129,7 @@ $(document).ready(function() {
         dom: 'Bfrtip',
         buttons: [
     ],
-    "order": [[ 0, "asc" ]],        
+    "order": [[ 1, "desc" ]],        
     })
 });
 </script>
