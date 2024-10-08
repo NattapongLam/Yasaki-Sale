@@ -19,8 +19,31 @@
                     <div class="col-12">
                         <h5 class="card-title" style="font-weight: bold">ยอดรวม</h5><br>
                         <canvas id="myBarChart" width="400" height="200"></canvas>
-
                         <div class="table-responsive">
+                            @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11)
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>พนักงานขาย</th>
+                                        <th>ยอดเดือนปีก่อนหน้า</th>
+                                        <th>ยอดเดือนปีปัจจุบัน</th>
+                                        <th>%</th>
+                                        <th>ยอดค้าง</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($hd3 as $item)
+                                        <tr>
+                                            <td>{{$item->sa_name}}</td>
+                                            <td>{{number_format($item->old_netamount,2)}}</td>
+                                            <td>{{number_format($item->new_netamount,2)}}</td>
+                                            <td>{{number_format($item->per_netamount,2)}}</td>
+                                            <td>{{number_format($item->backlogprice,2)}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            @else
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
@@ -41,6 +64,7 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            @endif
                         </div>
                         <h5 class="card-title" style="font-weight: bold">กลุ่มสินค้า</h5><br>
                         <div class="table-responsive">
@@ -63,7 +87,7 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-                            </table>
+                            </table>                           
                         </div>
                     </div>
                 </div> 
