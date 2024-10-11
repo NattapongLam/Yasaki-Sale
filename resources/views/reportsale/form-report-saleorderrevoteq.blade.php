@@ -14,10 +14,98 @@
             </div>
             @endif
             <div class="card-body">
-                <h3 class="card-title" style="font-weight: bold">REVOTEQ</h3><br><hr>
+                <h3 class="card-title" style="font-weight: bold">ยอดขาย REVOTEQ เทียบปี/เดือน</h3><br><hr>
                 <div class="row">
                     <div class="col-12">
                         <canvas id="myBarChart" width="400" height="200"></canvas>
+                        <h6 class="text-center" style="font-weight: bold; color: red;"> ** หากจำนวนเดือนไหนไม่ชนะปีที่ก่อนหน้าจะขึ้นเป็นตัวอักษรสีแดง **</h6>
+                        @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11)
+                        <div style="overflow-x:auto;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-center">พนักงานขาย</th>
+                                        @foreach ($groupedByMonth as $month => $items)
+                                            <th colspan="2" class="text-center">จำนวน(ชุด)ดือน {{$month}}</th> <!-- เพิ่ม colspan ตามจำนวนคอลัมน์ภายใต้เดือน -->
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        @foreach ($groupedByMonth as $month => $items)
+                                            <th class="text-center">ปี66</th> <!-- คอลัมน์แรกภายใต้เดือน -->
+                                            <th class="text-center">ปี67</th> <!-- คอลัมน์ที่สองภายใต้เดือน -->
+                                        @endforeach
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <tbody>
+                                        @foreach ($hd5->groupBy('sa_name') as $saleName => $itemsBySale)
+                                        <tr>
+                                            <td class="text-center">{{ $saleName}}</td>
+                                            @foreach ($groupedByMonth as $month => $items) 
+                                            @php
+                                                // ค้นหา netamount ของลูกค้าในแต่ละเดือน
+                                                $purchase = $itemsBySale->firstWhere('month', $month);
+                                                $amount1 = $purchase ? $purchase->old_qty : 0;   
+                                                $amount2 = $purchase ? $purchase->new_qty : 0;                                           
+                                            @endphp
+                                            @if ($amount1 > $amount2)
+                                            <td class="text-center">{{ number_format($amount1, 2) }}</td>
+                                            <td class="text-center" style="color: red">{{ number_format($amount2, 2) }}</td>
+                                            @else
+                                            <td class="text-center">{{ number_format($amount1, 2) }}</td>
+                                            <td class="text-center">{{ number_format($amount2, 2) }}</td>
+                                            @endif                                          
+                                            @endforeach
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </tbody>              
+                            </table>
+                        </div>
+                        @else
+                        <div style="overflow-x:auto;">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2" class="text-center">พนักงานขาย</th>
+                                        @foreach ($groupedByMonth as $month => $items)
+                                            <th colspan="2" class="text-center">จำนวน(ชุด)เดือน {{$month}}</th> <!-- เพิ่ม colspan ตามจำนวนคอลัมน์ภายใต้เดือน -->
+                                        @endforeach
+                                    </tr>
+                                    <tr>
+                                        @foreach ($groupedByMonth as $month => $items)
+                                            <th class="text-center">ปี66</th> <!-- คอลัมน์แรกภายใต้เดือน -->
+                                            <th class="text-center">ปี67</th> <!-- คอลัมน์ที่สองภายใต้เดือน -->
+                                        @endforeach
+                                    </tr>
+                                </thead>    
+                                <tbody>
+                                    <tbody>
+                                        @foreach ($hd5->groupBy('sa_name') as $saleName => $itemsBySale)
+                                        <tr>
+                                            <td class="text-center">{{ $saleName}}</td>
+                                            @foreach ($groupedByMonth as $month => $items) 
+                                            @php
+                                                // ค้นหา netamount ของลูกค้าในแต่ละเดือน
+                                                $purchase = $itemsBySale->firstWhere('month', $month);
+                                                $amount1 = $purchase ? $purchase->old_qty : 0;   
+                                                $amount2 = $purchase ? $purchase->new_qty : 0;                                           
+                                            @endphp
+                                            @if ($amount1 > $amount2)
+                                            <td class="text-center">{{ number_format($amount1, 2) }}</td>
+                                            <td class="text-center" style="color: red">{{ number_format($amount2, 2) }}</td>
+                                            @else
+                                            <td class="text-center">{{ number_format($amount1, 2) }}</td>
+                                            <td class="text-center">{{ number_format($amount2, 2) }}</td>
+                                            @endif                                          
+                                            @endforeach
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </tbody>              
+                            </table>
+                        </div>
+                        @endif
                         <div class="table-responsive">
                             <table id="example2" class="table table-bordered table-striped">
                                 <thead>

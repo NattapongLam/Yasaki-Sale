@@ -236,6 +236,8 @@ class ReportSaleOrder extends Controller
             ->get();
             $hd4 = DB::table('vw_saleorderproduct_revoteqall')
             ->get();
+            $hd5 = DB::table('vw_saleorderallmonthlist_revoteqsale')
+            ->get();
         }
         else {
             $hd1 = DB::table('vw_saleorderallmonthlist_revoteqsale')
@@ -250,8 +252,13 @@ class ReportSaleOrder extends Controller
             $hd4 = DB::table('vw_saleorderproduct_revoteqsale')
             ->where('salecode',Auth::user()->username)
             ->get();
+            $hd5 = DB::table('vw_saleorderallmonthlist_revoteqsale')
+            ->where('salecode',Auth::user()->username)
+            ->get();
         }
-        return view('reportsale.form-report-saleorderrevoteq', compact('hd1','hd2','hd3','hd4'));
+        $groupedByMonth = $hd5->groupBy('month')->toArray();
+        krsort($groupedByMonth);
+        return view('reportsale.form-report-saleorderrevoteq', compact('hd1','hd2','hd3','hd4','hd5','groupedByMonth'));
     }
     public function ReportCustomerOrder(Request $request)
     {
