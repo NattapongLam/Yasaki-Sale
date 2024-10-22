@@ -20,7 +20,7 @@
                         <h5 class="card-title" style="font-weight: bold">ยอดรวม</h5><br>
                         <canvas id="myBarChart" width="400" height="200"></canvas>
                         <div class="table-responsive">
-                            @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11)
+                            @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12)
                             <table class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

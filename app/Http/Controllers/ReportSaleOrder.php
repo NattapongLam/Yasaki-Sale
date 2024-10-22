@@ -91,7 +91,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportBacklogList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd = DB::table('vw_saleorder_backlog')
             ->get();
             $sum = DB::table('vw_saleorder_backlog')
@@ -109,7 +109,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSendProductList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd = DB::table('vw_saleorder_tras')
             ->get();
         }
@@ -122,7 +122,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportBillOrderList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd = DB::table('vw_saleorder_bill')
             ->get();
             $hd1 = DB::table('vw_saleorder_bill')
@@ -137,14 +137,14 @@ class ReportSaleOrder extends Controller
             ->where('docdate', '>=', Carbon::now()->subDays(7)) // หาข้อมูลย้อนหลัง 7 วัน
             ->where('salecode',Auth::user()->username)
             ->get();
-        }
+        }       
         $groupedByDay = $hd1->groupBy('docdate')->toArray();
         krsort($groupedByDay);
         return view('reportsale.form-report-billorder', compact('hd','hd1','groupedByDay'));
     }
     public function ReportGroupLowList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd = DB::table('api_productgrouplow')
             ->get();
         }
@@ -157,7 +157,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSaleOrderList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd1 = DB::table('vw_saleorderproductgroup_all')
             ->get();
             $hd2 = DB::table('vw_saleorderprovince_all')
@@ -197,7 +197,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSaleOrderMonthList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd1 = DB::table('vw_saleorderproductgroup_allmonth')
             ->get();
             $hd2 = DB::table('vw_saleorderallmonthlist_all')
@@ -227,7 +227,7 @@ class ReportSaleOrder extends Controller
     }
     public function ReportSaleOrderMonthListRevoteq(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd1 = DB::table('vw_saleorderallmonthlist_revoteqall')
             ->get();
             $hd2 = DB::table('vw_saleorderprovince_revoteqall')
@@ -265,7 +265,7 @@ class ReportSaleOrder extends Controller
         $end_date = $request->end_date ?? date("Y-m-d");
         $end_date = date("Y-m-d", strtotime("+1 month", strtotime($end_date)));
         $start_date = $request->start_date ? $request->start_date : date("Y-m-d", strtotime("-2 month", strtotime($end_date)));
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $cust = Customer::get();
             $hd = DB::table('api_saleorder_dos')
             ->whereBetween('docdate', [$request->start_date, $request->end_date])

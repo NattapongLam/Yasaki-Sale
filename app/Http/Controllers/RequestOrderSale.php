@@ -26,7 +26,7 @@ class RequestOrderSale extends Controller
         $end_date = $request->end_date ?? date("Y-m-d");
         $end_date = date("Y-m-d", strtotime("+1 month", strtotime($end_date)));
         $start_date = $request->start_date ? $request->start_date : date("Y-m-d", strtotime("-2 month", strtotime($end_date)));
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             if($request->start_date <> null && $request->end_date <> null){
                 $hd = DB::table('requestorder_hd')
                 ->leftjoin('requestorder_status','requestorder_hd.requestorder_status_id','=','requestorder_status.requestorder_status_id')
@@ -74,7 +74,7 @@ class RequestOrderSale extends Controller
      */
     public function create()
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $cust = Customer::leftjoin('vw_requestorder_pricetotal','customers.customer_code','=','vw_requestorder_pricetotal.arcode')
             ->get();
             $sale = DB::table('sale_employee')->get();
@@ -556,7 +556,7 @@ class RequestOrderSale extends Controller
 
     public function RequestorderList(Request $request)
     {
-        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11){
+        if(Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12){
             $hd = DB::table('vw_requestorder_pricetotal')
             ->leftjoin('customers','vw_requestorder_pricetotal.arcode','=','customers.customer_code')
             ->get();
