@@ -19,7 +19,7 @@
                     <div class="col-12">
                         <canvas id="myBarChart" width="400" height="200"></canvas>
                         <h6 class="text-center" style="font-weight: bold; color: red;"> ** หากจำนวนเดือนไหนไม่ชนะปีที่ก่อนหน้าจะขึ้นเป็นตัวอักษรสีแดง **</h6>
-                        @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12)
+                        @if (Auth::user()->id == 1 || Auth::user()->id == 10 || Auth::user()->id == 11 || Auth::user()->id == 12 || Auth::user()->id == 13)
                         <div style="overflow-x:auto;">
                             <table class="table table-bordered">
                                 <thead>
